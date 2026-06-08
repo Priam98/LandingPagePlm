@@ -30,7 +30,7 @@ document.addEventListener('mousemove', (e) =>{
     const dx = e.clientX - centerX;
     const dy = e.clientY - centerY;
     const jarak = Math.sqrt(dx*dx + dy*dy);
-    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*10}px, ${-dy*10}px)`;
+    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*5}px, ${-dy*5}px)`;
                      }
 });
                           
