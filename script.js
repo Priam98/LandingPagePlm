@@ -34,5 +34,6 @@ document.addEventListener('mousemove', (e) =>{
     if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*3}px, ${-dy*3}px)`; 
                       tombolKabur.textContent = pesan[Math.floor(Math.random() * pesan.length)];
                      }
+    else {tombolKabur.style.transform = `translate(0px, 0px)`; tombolKabur.textContent = 'Laporan Keuangan';
 });
                           
