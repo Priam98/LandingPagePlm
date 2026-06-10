@@ -1,25 +1,26 @@
-const years = document.querySelectorAll('.year-btn');
+const years = document.querySelectorAll(".year-btn");
 
-years.forEach(button => {
+years.forEach((button) => {
 
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
 
-        const content =
-            button.nextElementSibling;
+        const content = button.nextElementSibling;
 
-        content.classList.toggle('active');
+        content.classList.toggle("active");
 
-        if(content.classList.contains('active')){
-            button.innerHTML =
-            button.innerHTML.replace('▶','▼');
-        }else{
-            button.innerHTML =
-            button.innerHTML.replace('▼','▶');
+        if (content.classList.contains("active")) {
+            button.innerHTML = button.innerHTML.replace("▶", "▼");
+        } else {
+            button.innerHTML = button.innerHTML.replace("▼", "▶");
         }
 
     });
 
 });
+
+// =========================
+// Tombol Laporan Keuangan Kabur™
+// =========================
 
 const tombolKabur = document.querySelector(".kabur");
 
@@ -28,7 +29,11 @@ const pesan = [
     "Kepooo yaaaa",
     "Ga boleh ngintip",
     "Nah loh.....",
-    "Akses ditolak"
+    "Akses ditolak",
+    "Masih dicari?",
+    "Finance sedang offline",
+    "Balik kerja sana",
+    "Dikira gampang?"
 ];
 
 let posisiX = 0;
@@ -46,15 +51,37 @@ document.addEventListener("mousemove", (e) => {
 
     const jarak = Math.sqrt(dx * dx + dy * dy);
 
-    if (jarak < 150) {
+    if (jarak < 150 && jarak > 0) {
 
-        posisiX += (-dx / jarak) * 30;
-        posisiY += (-dy / jarak) * 30;
+        const kecepatan = 20;
+
+        posisiX += (-dx / jarak) * kecepatan;
+        posisiY += (-dy / jarak) * kecepatan;
+
+        // Biar ga kabur ke Kalimantan
+        posisiX = Math.max(-100, Math.min(100, posisiX));
+        posisiY = Math.max(-50, Math.min(50, posisiY));
 
         tombolKabur.style.transform =
             `translate(${posisiX}px, ${posisiY}px)`;
 
         tombolKabur.textContent =
             pesan[Math.floor(Math.random() * pesan.length)];
+
     }
+
+});
+
+// Balik normal kalau mouse keluar halaman
+document.addEventListener("mouseleave", () => {
+
+    posisiX = 0;
+    posisiY = 0;
+
+    tombolKabur.style.transform =
+        "translate(0px, 0px)";
+
+    tombolKabur.textContent =
+        "Laporan Keuangan";
+
 });
