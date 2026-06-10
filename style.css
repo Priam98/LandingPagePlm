@@ -103,4 +103,6 @@ footer{
     grid-template-columns:1fr;
 }
 
+.kabur{transition: transform 0.15s ease;
+      }
 }
