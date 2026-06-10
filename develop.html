@@ -45,7 +45,24 @@
             <div class="progress">
                 <div class="bar">
                 </div>
-                <p>loading.......98%</p>
+                <style>
+                    .progress{
+                        width: 300px;
+                        height: 10px;
+                        background: #333;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        margin: auto;}
+                    .bar{
+                        width: 40%;
+                        height: 100%;
+                        background: #4da6ff;
+                        animation: loading 2s infinite;}
+                    @keyframes loading{
+                        0%{transform:translateX(-100%);}
+                        100%{transform:translateX(300%);}
+                    }
+                </style>
         <p>Halaman ini masih dalam pengembangan.</p>
         <p>Silakan kembali lagi nanti.</p>
         <p>Developer sedang mencoba memperbaiki bug yang ternyata adalah fitur🤣</p>
