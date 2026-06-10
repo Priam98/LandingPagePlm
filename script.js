@@ -30,7 +30,10 @@ document.addEventListener('mousemove', (e) =>{
     const dx = e.clientX - centerX;
     const dy = e.clientY - centerY;
     const jarak = Math.sqrt(dx*dx + dy*dy);
-    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*5}px, ${-dy*5}px)`;
+    const pesan = ["Hayoo ngapain", "Kepooo yaaa", "Ga boleh ngintip lho", "Nah loh...."];
+    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*3}px, ${-dy*3}px)`;
+                      tombolKabur.textContent =
+                          pesan[Math.floor(Math.random() * pesan.length)]
                      }
 });
                           
