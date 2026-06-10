@@ -21,18 +21,40 @@ years.forEach(button => {
 
 });
 
-const tombolKabur = 
-document.querySelector('.kabur');
-document.addEventListener('mousemove', (e) =>{
+const tombolKabur = document.querySelector(".kabur");
+
+const pesan = [
+    "Hayoo ngapain",
+    "Kepooo yaaaa",
+    "Ga boleh ngintip",
+    "Nah loh.....",
+    "Akses ditolak"
+];
+
+let posisiX = 0;
+let posisiY = 0;
+
+document.addEventListener("mousemove", (e) => {
+
     const rect = tombolKabur.getBoundingClientRect();
+
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
+
     const dx = e.clientX - centerX;
     const dy = e.clientY - centerY;
-    const jarak = Math.sqrt(dx*dx + dy*dy);
-    const pesan = ["Hayoo ngapain", "Kepooo yaaaa", "Ga boleh ngintip", "Nah loh....", "Kaget", "Ayo tangkap"];
-    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*3}px, ${-dy*3}px)`; 
-                      tombolKabur.textContent = pesan[Math.floor(Math.random() * pesan.length)];
-                     }
+
+    const jarak = Math.sqrt(dx * dx + dy * dy);
+
+    if (jarak < 150) {
+
+        posisiX += (-dx / jarak) * 30;
+        posisiY += (-dy / jarak) * 30;
+
+        tombolKabur.style.transform =
+            `translate(${posisiX}px, ${posisiY}px)`;
+
+        tombolKabur.textContent =
+            pesan[Math.floor(Math.random() * pesan.length)];
+    }
 });
-                          
