@@ -97,18 +97,19 @@ footer{
     font-weight:bold;
 }
 
-@media(max-width:768px){
-
-.grid{
-    grid-template-columns:1fr;
-}
-
 #quotes{
     margin-top: 15px;
     font-style: italic;
     color: #666;
     font-size:0.85rem;
 }
+
+@media(max-width:768px){
+
+.grid{
+    grid-template-columns:1fr;
+}
+
 
 .kabur{transition: transform 0.15s ease;
       }
