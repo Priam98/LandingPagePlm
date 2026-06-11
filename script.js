@@ -50,7 +50,7 @@ const quotes = [
     "Developer sedang online, mungkin"
 ];
 document.getElementById('quotes').textContent =
-    quotes[Math.floor(Math.random() * quotes.length)]
+    "💡 " + quotes[Math.floor(Math.random() * quotes.length)]
     ;
     
 

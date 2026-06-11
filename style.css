@@ -104,10 +104,10 @@ footer{
 }
 
 #quotes{
-    margin-top:8px;
-    font-style:italic;
-    opacity:0.8;
-    font-size:0.9rem;
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+    font-size:0.85rem;
 }
 
 .kabur{transition: transform 0.15s ease;
