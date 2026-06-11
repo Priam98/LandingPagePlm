@@ -103,7 +103,7 @@ footer{
     grid-template-columns:1fr;
 }
 
-#quote{
+#quotes{
     margin-top:8px;
     font-style:italic;
     opacity:0.8;

@@ -49,6 +49,17 @@ const quotes = [
     "Jika tombol bergerak, itu bukan bug, tapi fitur interaktif",
     "Developer sedang online, mungkin"
 ];
-document.getElementById('quote').textContent =
-    quotes[Math.floor(Math.random() * quotes.length)];
+document.getElementById('quotes').textContent =
+    quotes[Math.floor(Math.random() * quotes.length)]
+    ;
     
+
+const logo = document.getElementById("logo");
+let klikLogo = 0;
+logo.addEventListener("click", () => {
+    klikLogo++;
+    if (klikLogo === 5) {
+        alert("Developer mode activated! Kamu menemukan rahasia tersembunyi! Selamat menikmati fitur rahasia ini!");
+        window.location.href = "laporan keuangan.html";
+        klikLogo = 0;
+    }});
