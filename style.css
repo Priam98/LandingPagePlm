@@ -103,6 +103,13 @@ footer{
     grid-template-columns:1fr;
 }
 
+#quote{
+    margin-top:8px;
+    font-style:italic;
+    opacity:0.8;
+    font-size:0.9rem;
+}
+
 .kabur{transition: transform 0.15s ease;
       }
 }

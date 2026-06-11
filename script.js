@@ -37,3 +37,18 @@ document.addEventListener('mousemove', (e) =>{
                      }
 });
                           
+const quotes = [
+    "Bug yang konsisten itu bukan bug, tapi fitur",
+    "Spreadsheet adalah database yang tersesat",
+    "Hari tanpa error adalah bonus",
+    "Jika ragu, refresh saja dulu pake F5",
+    "Kalu jalan, errornya jalan juga",
+    "Developer ini sedang mencoba yang terbaik",
+    "Versi paling stabil itu yang belum dirilis",
+    "Data tidak akahn hilang, Semoga😅",
+    "Jika tombol bergerak, itu bukan bug, tapi fitur interaktif",
+    "Developer sedang online, mungkin"
+];
+document.getElementById('quote').textContent =
+    quotes[Math.floor(Math.random() * quotes.length)];
+    
