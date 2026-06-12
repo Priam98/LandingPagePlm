@@ -66,6 +66,6 @@ logo.addEventListener("click", () => {
 
 
 function cari() {
-    const hasil = document.getElementById("hasil cari");
+    const hasil = document.getElementById("hasilCari");
     hasil.textContent = "Coba tanya ke developer, dia lebih tau soal spreadsheet ini daripada aku😅";
 };
