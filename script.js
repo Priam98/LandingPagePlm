@@ -81,4 +81,4 @@ function bukaDrawing(){
         window.location.href = "shop drawing.html";
     }
 
-}
+};
