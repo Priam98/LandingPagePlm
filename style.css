@@ -108,12 +108,17 @@ header p{
 }
 
 .year-content{
-    display:none;
-    padding:10px 0;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(-10px);
+    transition:all 0.3s ease;
 }
 
 .year-content.active{
-    display:block;
+    max-height:1000px;
+    opacity:1;
+    transform:translateY(0);
 }
 
 footer{
