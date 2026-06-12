@@ -63,3 +63,9 @@ logo.addEventListener("click", () => {
         window.location.href = "laporan keuangan.html";
         klikLogo = 0;
     }});
+
+
+function cari() {
+    const hasil = document.getElementById("hasil cari");
+    hasil.textContent = "Coba tanya ke developer, dia lebih tau soal spreadsheet ini daripada aku😅";
+};
