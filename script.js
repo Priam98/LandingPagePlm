@@ -69,7 +69,8 @@ function cari() {
     const hasil = document.getElementById("hasilCari");
     const keyword = document.getElementById("searchInput").value;
     alert(`Pencarian "${keyword}" tidak ditemukan.\n\n` + 
-        "Coba tanya developer, dia lebih tahu di mana letak spreadsheetnya daripada aku😅");
+        "Coba tanya developer, dia lebih tahu di mana letak spreadsheetnya daripada aku😅\n\n" + 
+        "Powered by ChatGPT");
 };
 
 function bukaDrawing(){
