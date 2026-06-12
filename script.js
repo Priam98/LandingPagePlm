@@ -68,5 +68,6 @@ logo.addEventListener("click", () => {
 function cari() {
     const hasil = document.getElementById("hasilCari");
     const keyword = document.getElementById("searchInput").value;
-    hasil.textContent = `Pencarian "${keyword}" tidak ditemukan, Coba tanya ke developer, dia lebih tau soal spreadsheet ini daripada aku😅`;
+    alert(`Pencarian "${keyword}" tidak ditemukan.\n\n` + 
+        "Coba tanya developer, dia lebih tahu di mana letak spreadsheetnya daripada aku😅");
 };
