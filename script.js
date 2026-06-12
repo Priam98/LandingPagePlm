@@ -71,3 +71,14 @@ function cari() {
     alert(`Pencarian "${keyword}" tidak ditemukan.\n\n` + 
         "Coba tanya developer, dia lebih tahu di mana letak spreadsheetnya daripada aku😅");
 };
+
+function bukaDrawing(){
+    const lanjut = confirm(
+        "Anda akan memasuki area Shop Drawing.\n\n" +
+        "Mohon jangan berharap banyak, karena ini masih dalam tahap pengembangan. Tapi tenang aja, kalau kamu klik OK, kamu akan diarahkan ke halaman yang sedang dalam proses pembuatan. Jadi, harap bersabar ya! Terima kasih atas pengertiannya!"
+    );
+    if (lanjut) {
+        window.location.href = "shop drawing.html";
+    }
+
+}
