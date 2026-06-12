@@ -38,9 +38,12 @@ header{
     padding:6px 12px;
 }
 
-.hasil.cari{
-    margin-top:8px;
-    font-size:0.85rem;
+.hasil-cari{
+    position:absolute;
+    top:50px;
+    right:20px;
+    width:300px;
+    font-size:12px;
     color:#666;
     font-style:italic;
 }
