@@ -37,6 +37,14 @@ header{
 .search-box button{
     padding:6px 12px;
 }
+
+.hasil.cari{
+    margin-top:8px;
+    font-size:0.85rem;
+    color:#666;
+    font-style:italic;
+}
+
 .logo{
     width:80px;
     margin-bottom:10px;
@@ -129,4 +137,10 @@ footer{
 
 .kabur{transition: transform 0.15s ease;
       }
+
+.search-box{
+    position:static;
+    margin-bottom:10px;
+    justify-content:center;
+}
 }
