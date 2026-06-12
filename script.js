@@ -45,7 +45,7 @@ const quotes = [
     "Kalu jalan, errornya jalan juga",
     "Developer ini sedang mencoba yang terbaik",
     "Versi paling stabil itu yang belum dirilis",
-    "Data tidak akahn hilang, Semoga😅",
+    "Data tidak akan hilang, Semoga😅",
     "Jika tombol bergerak, itu bukan bug, tapi fitur interaktif",
     "Developer sedang online, mungkin"
 ];
