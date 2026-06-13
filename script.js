@@ -47,7 +47,10 @@ const quotes = [
     "Versi paling stabil itu yang belum dirilis",
     "Data tidak akan hilang, Semoga😅",
     "Jika tombol bergerak, itu bukan bug, tapi fitur interaktif",
-    "Developer sedang online, mungkin"
+    "Developer sedang online, mungkin",
+    "Bug sudah diperbaiki, bug baru sedang dibuat",
+    "Kalau tombol tidak berfungsi, coba tatap dengan penuh amaran, mungkin dia butuh perhatian",
+    "Kalau tombol kabur, itu bukan bug, tapi fitur untuk melatih kecepatan mouse kamu"
 ];
 document.getElementById('quotes').textContent =
     "💡 " + quotes[Math.floor(Math.random() * quotes.length)]
