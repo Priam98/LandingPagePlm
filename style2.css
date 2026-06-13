@@ -75,6 +75,12 @@ header p{
     box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
 
+.card custom{
+    grid-column: 1/-1;
+    max-width: 450px;
+    justify-self: center;
+}
+
 .card h2{
     margin-bottom:15px;
     width:350px;
