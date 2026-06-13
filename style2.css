@@ -138,6 +138,38 @@ footer{
     font-size:0.85rem;
 }
 
+.wa-container{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:10px;
+    margin-right:10px;
+}
+
+.wa-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    background:#25d366;
+    color:white;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:50px;
+
+    z-index:9999;
+}
+
+
+.wa-btn img{
+    width:24px;
+    height:24px;
+}
+
+
 @media(max-width:768px){
 
 .grid{
