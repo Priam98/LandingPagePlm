@@ -67,8 +67,10 @@ function onDrop(source, target) {
         );
 
         engine.postMessage(
-            "go depth 10"
+            "go depth 20"
         );
+
+        //Ubah depth untuk menurunkan atau menaikkan level. Manusia normal di angka 5
 
     }, 200);
 }
