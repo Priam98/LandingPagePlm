@@ -12,7 +12,7 @@ function savePlayerName() {
     if (!playerName) {
         playerName = "Ga berani kasih nama";
     }
-LocalStorage.setItem("currentPlayer", playerName);
+localStorage.setItem("currentPlayer", playerName);
     alert("Nama disimpan: " + playerName);
 }
 
@@ -134,6 +134,8 @@ function onDrop(source, target) {
 function cekStatus() {
 
     let status = "";
+
+    let gameSelesai = false;
 
     if (game.in_checkmate()) {
 
