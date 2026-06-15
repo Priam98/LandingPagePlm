@@ -5,6 +5,7 @@ const game = new Chess();
 const board = Chessboard('board', {
     draggable: true,
     position: 'start',
+    pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
     onDrop: onDrop
 });
 

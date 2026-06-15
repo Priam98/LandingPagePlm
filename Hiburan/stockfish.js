@@ -1,1 +1,0 @@
-Couldn't find the requested file /src/stockfish.js in stockfish.
