@@ -6,9 +6,16 @@ const board = Chessboard('board', {
     draggable: true,
     position: 'start',
     pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
+    onDragStart: onDragStart,
     onDrop: onDrop
 });
 
+function onDragStart(source, piece, position, orientation) {
+        // Game Selesai
+        if (game.game_over()) return false;
+        if (game.turn() !== 'w') return false;
+        if (piece.startsWith('b')) return false;
+    };
 // Pakai Stockfish dari CDN
 const engine = new Worker(
     "stockfish.js"
