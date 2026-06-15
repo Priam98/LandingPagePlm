@@ -11,7 +11,7 @@ const board = Chessboard('board', {
 
 // Pakai Stockfish dari CDN
 const engine = new Worker(
-    "https://cdn.jsdelivr.net/gh/niklasf/stockfish.js@master/stockfish.js"
+    "stockfish.js"
 );
 
 engine.onerror = function(event) {
