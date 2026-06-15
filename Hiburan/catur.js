@@ -2,6 +2,56 @@
 
 const game = new Chess();
 
+let playerName = localStorage.getItem("currentPlayer") || "Ga berani kasih nama";
+
+let stats = JSON.parse(
+    localStorage.getItem("stats")) || {}
+
+function savePlayerName() {
+    playerName = document.getElementById("playerName").value.trim();
+    if (!playerName) {
+        playerName = "Ga berani kasih nama";
+    }
+LocalStorage.setItem("currentPlayer", playerName);
+    alert("Nama disimpan: " + playerName);
+}
+
+
+function updateLeaderboard() {
+    const fame = Object.entries(stats)
+        .sort((a, b) => b[1].menang - a[1].menang);
+    const shame = Object.entries(stats)
+        .sort((a, b) => b[1].kalah - a[1].kalah);
+
+    document.getElementById("hallOfFame").innerHTML =
+        fame.slice(0, 5)
+        .map(
+            (x,i) => `${i+1}. ${x[0]} - ${x[1].menang} kemenangan`).join("<br>");
+    document.getElementById("hallOfShame").innerHTML =
+        shame.slice(0, 5)
+        .map(
+            (x,i) => `${i+1}. ${x[0]} - ${x[1].kalah} kekalahan`).join("<br>");
+}
+
+function tambahMenang() {
+    if (!stats[playerName]) {
+        stats[playerName] = { menang: 0, kalah: 0 };
+
+}
+    stats[playerName].menang++;
+    localStorage.setItem("stats", JSON.stringify(stats));
+    updateLeaderboard();
+}
+
+function tambahKalah() {
+    if (!stats[playerName]) {
+        stats[playerName] = { menang: 0, kalah: 0 };
+    }
+    stats[playerName].kalah++;
+    localStorage.setItem("stats", JSON.stringify(stats));
+    updateLeaderboard();
+}
+
 const board = Chessboard('board', {
     draggable: true,
     position: 'start',
@@ -87,7 +137,17 @@ function cekStatus() {
 
     if (game.in_checkmate()) {
 
-        status = "💀 Checkmate.";
+        if (!gameSelesai){
+            gameSelesai = true;
+        
+
+        if (game.turn() === 'w') {
+            status = "Cih, CUPU😏";
+            tambahKalah();
+        } else {
+            status = "Hoki doang😏";
+            tambahMenang();
+        }}
 
     } else if (game.in_draw()) {
 
@@ -115,3 +175,6 @@ function newGame() {
         "Game baru dimulai.";
 
 }
+
+updateLeaderboard();
+document.getElementById("playerName").value = playerName;
