@@ -137,16 +137,14 @@ function cekStatus() {
 
     if (game.in_checkmate()) {
 
-        if (!gameSelesai){
-            gameSelesai = true;
-        
-
         if (game.turn() === 'w') {
             status = "Cih, CUPU😏";
+            if (!gameSelesai) {gameSelesai = true;
             tambahKalah();
         } else {
             status = "Hoki doang😏";
-            tambahMenang();
+            if (!gameSelesai) {gameSelesai=true;
+            tambahMenang();}
         }}
 
     } else if (game.in_draw()) {
