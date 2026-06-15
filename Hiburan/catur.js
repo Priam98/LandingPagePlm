@@ -66,9 +66,9 @@ function onDrop(source, target) {
         engine.postMessage(
             "position fen " + game.fen()
         );
-
+// Pakai depth 5 untuk AI yang lebih manusiawi, atau depth 20 untuk AI yang lebih kuat (tapi lebih lambat)
         engine.postMessage(
-            "go depth 12"
+            "go depth 20"
         );
 
     }, 200);
