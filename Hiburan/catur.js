@@ -90,8 +90,8 @@ function cekStatus() {
 
         status =
             (game.turn() === 'w')
-            ? "♔ Putih jalan."
-            : "♚ Hitam berpikir...";
+            ? "♔ Giliran lu, main yang putih, jangan blunder."
+            : "♚ AI sedang mencari kesalahan gerakanmu, sabar ya.";
     }
 
     document.getElementById("status").innerText =
