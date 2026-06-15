@@ -10,7 +10,7 @@ const board = Chessboard('board', {
 
 // Pakai Stockfish dari CDN
 const engine = new Worker(
-    "https://cdn.jsdelivr.net/npm/stockfish@16.0.0/src/stockfish.js"
+    "https://cdn.jsdelivr.net/npm/stockfish@11.0.0/stockfish.js"
 );
 
 engine.postMessage("uci");
