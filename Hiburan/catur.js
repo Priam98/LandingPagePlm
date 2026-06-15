@@ -10,8 +10,14 @@ const board = Chessboard('board', {
 
 // Pakai Stockfish dari CDN
 const engine = new Worker(
-    "https://cdn.jsdelivr.net/npm/stockfish@11.0.0/stockfish.js"
+    "https://cdn.jsdelivr.net/gh/niklasf/stockfish.js@master/stockfish.js"
 );
+
+engine.onerror = function(event) {
+    console.error("Stockfish worker error", event);
+    document.getElementById("status").innerText =
+        "Gagal memuat engine catur. Cek koneksi atau URL CDN.";
+};
 
 engine.postMessage("uci");
 
