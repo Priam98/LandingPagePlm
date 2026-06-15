@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QC Chess Arena</title>
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+}
+
+#board{
+    width:100%;
+    max-width:550px;
+    margin:20px auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.status{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.quote{
+    margin-top:15px;
+    color:#666;
+    font-style:italic;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="back-btn">
+⬅ Kembali ke Portal
+</a>
+
+<div class="card">
+
+<h1>♟️ QC Chess Arena</h1>
+
+<p>
+Karena produktivitas sudah maksimal,
+saatnya menambah fitur yang tidak diminta siapa-siapa.
+</p>
+
+<div id="board"></div>
+
+<button onclick="newGame()">
+Game Baru
+</button>
+
+<div class="status" id="status">
+Putih jalan dulu.
+</div>
+
+<div class="quote" id="quote">
+"NCR ditolak karena blunder kuda."
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+
+<script>
+
+const game = new Chess();
+
+const quotes = [
+    "NCR ditolak karena blunder kuda.",
+    "Auditor melihat langkahmu.",
+    "Bidak ini telah melewati inspeksi QC.",
+    "Temuan: benteng tidak dikendalikan.",
+    "Produktivitas naik sebesar 0%.",
+    "Developer juga tidak tahu kenapa fitur ini ada."
+];
+
+const board = Chessboard('board',{
+    position:'start'
+});
+
+function newGame(){
+
+    game.reset();
+
+    board.position('start');
+
+    document.getElementById('status').innerText =
+        "Game baru dimulai.";
+
+    document.getElementById('quote').innerText =
+        quotes[Math.floor(Math.random()*quotes.length)];
+}
+
+</script>
+
+</body>
+</html>
