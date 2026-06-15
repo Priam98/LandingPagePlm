@@ -107,37 +107,5 @@ Putih jalan dulu.
 
 <script src="catur.js"></script>
 
-<script>
-
-const game = new Chess();
-
-const quotes = [
-    "NCR ditolak karena blunder kuda.",
-    "Auditor melihat langkahmu.",
-    "Bidak ini telah melewati inspeksi QC.",
-    "Temuan: benteng tidak dikendalikan.",
-    "Produktivitas naik sebesar 0%.",
-    "Developer juga tidak tahu kenapa fitur ini ada."
-];
-
-const board = Chessboard('board',{
-    position:'start'
-});
-
-function newGame(){
-
-    game.reset();
-
-    board.position('start');
-
-    document.getElementById('status').innerText =
-        "Game baru dimulai.";
-
-    document.getElementById('quote').innerText =
-        quotes[Math.floor(Math.random()*quotes.length)];
-}
-
-</script>
-
 </body>
 </html>
