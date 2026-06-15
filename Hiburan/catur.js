@@ -25,6 +25,7 @@ engine.postMessage("uci");
 engine.onmessage = function(event) {
 
     const msg = event.data;
+    console.log(msg);
 
     if (msg.startsWith("bestmove")) {
 
