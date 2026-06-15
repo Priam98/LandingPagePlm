@@ -68,7 +68,7 @@ function onDrop(source, target) {
         );
 // Pakai depth 5 untuk AI yang lebih manusiawi, atau depth 20 untuk AI yang lebih kuat (tapi lebih lambat)
         engine.postMessage(
-            "go depth 20"
+            "go depth 12"
         );
 
     }, 200);
