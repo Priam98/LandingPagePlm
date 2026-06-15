@@ -67,7 +67,7 @@ function onDrop(source, target) {
         );
 
         engine.postMessage(
-            "go depth 12"
+            "go depth 10"
         );
 
     }, 200);
