@@ -2,6 +2,8 @@
 
 const game = new Chess();
 
+let gameSelesai = false;
+
 let playerName = localStorage.getItem("currentPlayer") || "Ga berani kasih nama";
 
 let stats = JSON.parse(
@@ -41,6 +43,12 @@ function tambahMenang() {
     stats[playerName].menang++;
     localStorage.setItem("stats", JSON.stringify(stats));
     updateLeaderboard();
+    fetch("https://script.google.com/macros/s/AKfycbwCFMJzeWu_gSdlKvWOxiSx15GtUNTErL3PWkbRV-VdDpYrLY0zZaS3w6LFl0XaH8l2jg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            nama: playerName,
+            hasil: "Menang"
+      })});
 }
 
 function tambahKalah() {
@@ -50,6 +58,13 @@ function tambahKalah() {
     stats[playerName].kalah++;
     localStorage.setItem("stats", JSON.stringify(stats));
     updateLeaderboard();
+    fetch("https://script.google.com/macros/s/AKfycbwCFMJzeWu_gSdlKvWOxiSx15GtUNTErL3PWkbRV-VdDpYrLY0zZaS3w6LFl0XaH8l2jg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            nama: playerName,
+            hasil: "Kalah"
+        })
+    });
 }
 
 const board = Chessboard('board', {
@@ -134,8 +149,6 @@ function onDrop(source, target) {
 function cekStatus() {
 
     let status = "";
-
-    let gameSelesai = false;
 
     if (game.in_checkmate()) {
 
