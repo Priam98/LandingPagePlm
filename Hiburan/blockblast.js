@@ -267,40 +267,59 @@ function kirimScore(){
     );
 }
 
-
-
 async function loadLeaderboard(){
 
-    const res =
-        await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnTevQfnnmolwoa5N02B-yczf_lG1-CHtohN5UQw1UnMqumZDtbzsDbSvjdTEApm3APo_OtLMKyaU6FrGOlL3elBb9PiwnU0AvItiTQWVPJiIAgkxF9EXzQFVMH4SFHU41CNbMZ2XQf9Prpaq3xMkokks9sRo2frC2z-YeZya6ESHYDpSpamB8lmX6gwVGnE3miMAaOLage-RWTAyxFFu_1NZVdj4QfpNm7A35q-Ka18LKD4a2U2NC-X_3MbubyHorkD7t34oa-9aNKnn_RjnWljYZRbsA&lib=MkvDQCDpHH6igHxnD9y4T78wcaYvkCzHp");
+    try{
 
-    const data =
-        await res.json();
+        const res = await fetch(
+            "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnTevQfnnmolwoa5N02B-yczf_lG1-CHtohN5UQw1UnMqumZDtbzsDbSvjdTEApm3APo_OtLMKyaU6FrGOlL3elBb9PiwnU0AvItiTQWVPJiIAgkxF9EXzQFVMH4SFHU41CNbMZ2XQf9Prpaq3xMkokks9sRo2frC2z-YeZya6ESHYDpSpamB8lmX6gwVGnE3miMAaOLage-RWTAyxFFu_1NZVdj4QfpNm7A35q-Ka18LKD4a2U2NC-X_3MbubyHorkD7t34oa-9aNKnn_RjnWljYZRbsA&lib=MkvDQCDpHH6igHxnD9y4T78wcaYvkCzHp"
+        );
 
-    let fame = "";
+        const data = await res.json();
 
-    data.slice(0,10)
-        .forEach((p,i)=>{
+        // Hall of Fame
+        let fameHtml = "";
 
-        fame +=
-            `${i+1}. ${p.nama} - ${p.score}<br>`;
+        data
+            .sort((a,b)=>b.score-a.score)
+            .slice(0,10)
+            .forEach((p,i)=>{
 
-    });
+                fameHtml +=
+                    `${i+1}. ${p.nama} - ${p.score}<br>`;
 
-    document
-        .getElementById("fame")
-        .innerHTML = fame;
+            });
+
+        document
+            .getElementById("fame")
+            .innerHTML = fameHtml;
+
+        // Hall of Shame
+        let shameHtml = "";
+
+        [...data]
+            .sort((a,b)=>a.score-b.score)
+            .slice(0,10)
+            .forEach((p,i)=>{
+
+                shameHtml +=
+                    `${i+1}. ${p.nama} - ${p.score}<br>`;
+
+            });
+
+        document
+            .getElementById("shame")
+            .innerHTML = shameHtml;
+
+    }catch(err){
+
+        console.error(
+            "Leaderboard error:",
+            err
+        );
+
+    }
 }
 
 loadLeaderboard();
-
-const shame =
-    [...data]
-    .sort((a,b)=>a.score-b.score)
-    .slice(0,10);
-
-
-gtag("event","blockblast_gameover",{
-  score: score
-});
 
