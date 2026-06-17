@@ -26,8 +26,8 @@ const pieces = [
     [[1,1,1],[1,1,1],[1,1,1]], //9 kotak
     [[1,1,1],[1,0,1],[1,1,1]], //9 kotak bolong
     [[0,1,0],[1,1,1],[0,1,0]], // +
-    [[0,1,],[1,1,],[0,1,]], // T kiri
-    [[1,0,],[1,1,],[1,0,]], // T kanan
+    [[0,1,],[1,1],[0,1,]], // T kiri
+    [[1,0,],[1,1],[1,0,]], // T kanan
     [[1,1,],[1,0,],[1,1,]], //c
     [[1,1,],[0,1,],[1,1,]], //c kebalik
     [[1,1,],[1,1,],[1,1,]] // 2x3
@@ -136,6 +136,24 @@ function canPlace(piece,row,col){
     return true;
 }
 
+function animasiClear(cells){
+
+    cells.forEach(pos => {
+
+        const target =
+            document.querySelector(
+                `[data-row="${pos.row}"][data-col="${pos.col}"]`
+            );
+
+        if(target){
+            target.classList.add("clearing");
+        }
+    });
+    // fitur baru
+    navigator.vibrate?.(80);
+    // batas fitur
+
+
 function placePiece(row,col){
 
     if(isGameOver){
@@ -163,23 +181,10 @@ function placePiece(row,col){
         }
     }
 
-function animasiClear(cells){
 
-    cells.forEach(pos => {
-
-        const target =
-            document.querySelector(
-                `[data-row="${pos.row}"][data-col="${pos.col}"]`
-            );
-
-        if(target){
-            target.classList.add("clearing");
-        }
-    });
-    // fitur baru
-    navigator.vibrate?.(80);
-    // batas fitur
 }
+
+
 
 
     cekClear();
