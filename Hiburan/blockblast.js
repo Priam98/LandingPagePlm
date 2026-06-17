@@ -152,7 +152,7 @@ function animasiClear(cells){
     // fitur baru
     navigator.vibrate?.(80);
     // batas fitur
-
+}
 
 function placePiece(row,col){
 
@@ -205,7 +205,7 @@ function placePiece(row,col){
             score
         );
     }
-}
+
 
 function cekClear(){
 
