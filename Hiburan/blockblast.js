@@ -181,12 +181,6 @@ function placePiece(row,col){
         }
     }
 
-
-}
-
-
-
-
     cekClear();
 
     currentPiece = randomPiece();
@@ -205,7 +199,7 @@ function placePiece(row,col){
             score
         );
     }
-
+}
 
 function cekClear(){
 
@@ -221,9 +215,9 @@ function cekClear(){
                     row:row,
                     col:col
                 });
-            }
 
-            gameBoard[row].fill(0);
+                gameBoard[row][col] = 0;
+            }
 
             score += 100;
         }
@@ -252,7 +246,7 @@ function cekClear(){
                     col:col
                 });
 
-                gameBoard[row][col]=0;
+                gameBoard[row][col] = 0;
             }
 
             score += 100;
@@ -261,7 +255,6 @@ function cekClear(){
 
     animasiClear(clearCells);
 }
-
 function gameOver(){
 
     for(let row=0;row<8;row++){
