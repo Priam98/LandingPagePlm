@@ -32,6 +32,7 @@ body{
     border-radius:12px;
     max-width:900px;
     margin:auto;
+}
 
 #piecePreview{
     display:grid;
@@ -54,6 +55,4 @@ body{
 #score{
     color:#4caf50;
     font-weight:bold;
-}
-
 }

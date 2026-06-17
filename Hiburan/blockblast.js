@@ -1,5 +1,6 @@
 const board = document.getElementById("board");
 const scoreEl = document.getElementById("score");
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyBCbCI6hxv6AFp_H_wzSPOYQA51pAMOgMnwCTvob0Qde81454kjOS0c9ivwIkcqjEe9g/exec"
 
 let score = 0;
 let isGameOver = false;
@@ -150,6 +151,8 @@ function placePiece(row,col){
 
     if(gameOver()){
 
+        kirimScore();
+
         isGameOver = true;
 
         alert(
@@ -244,3 +247,23 @@ function newGame(){
 
 drawBoard();
 drawPreview();
+
+function kirimScore(){
+
+    const nama =
+      document.getElementById(
+        "playerName"
+      ).value || "Anonim";
+
+    fetch(WEBAPP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            nama:nama,
+            score:score
+        })
+    })
+    .catch(err =>
+        console.log(err)
+    );
+}
+
