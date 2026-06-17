@@ -62,7 +62,10 @@ function drawBoard(){
             if(gameBoard[row][col]){
                 cell.classList.add("filled");
             }
-
+// fitur baru
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+// batas fitur baru
             cell.onclick =
                 () => placePiece(row,col);
 
@@ -160,6 +163,25 @@ function placePiece(row,col){
         }
     }
 
+function animasiClear(cells){
+
+    cells.forEach(pos => {
+
+        const target =
+            document.querySelector(
+                `[data-row="${pos.row}"][data-col="${pos.col}"]`
+            );
+
+        if(target){
+            target.classList.add("clearing");
+        }
+    });
+    // fitur baru
+    navigator.vibrate?.(80);
+    // batas fitur
+}
+
+
     cekClear();
 
     currentPiece = randomPiece();
@@ -182,13 +204,19 @@ function placePiece(row,col){
 
 function cekClear(){
 
-    for(let row=0;row<8;row++){
+    let clearCells = [];
 
-        if(
-            gameBoard[row].every(
-                cell => cell
-            )
-        ){
+    for(let row=0; row<8; row++){
+
+        if(gameBoard[row].every(cell => cell)){
+
+            for(let col=0; col<8; col++){
+
+                clearCells.push({
+                    row:row,
+                    col:col
+                });
+            }
 
             gameBoard[row].fill(0);
 
@@ -196,15 +224,13 @@ function cekClear(){
         }
     }
 
-    for(let col=0;col<8;col++){
+    for(let col=0; col<8; col++){
 
         let penuh = true;
 
-        for(let row=0;row<8;row++){
+        for(let row=0; row<8; row++){
 
-            if(
-                gameBoard[row][col]===0
-            ){
+            if(gameBoard[row][col]===0){
 
                 penuh = false;
 
@@ -214,7 +240,12 @@ function cekClear(){
 
         if(penuh){
 
-            for(let row=0;row<8;row++){
+            for(let row=0; row<8; row++){
+
+                clearCells.push({
+                    row:row,
+                    col:col
+                });
 
                 gameBoard[row][col]=0;
             }
@@ -222,6 +253,8 @@ function cekClear(){
             score += 100;
         }
     }
+
+    animasiClear(clearCells);
 }
 
 function gameOver(){
@@ -273,16 +306,25 @@ function kirimScore(){
         "playerName"
       ).value || "Takut HRD";
 
-    fetch(WEBAPP_URL,{
-        method:"POST",
-        body:JSON.stringify({
-            nama:nama,
-            score:score
-        })
+fetch(WEBAPP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        nama:nama,
+        score:score
     })
-    .catch(err =>
-        console.log(err)
-    );
+})
+.then(() => {
+
+    setTimeout(() => {
+
+        loadLeaderboard();
+
+    },1000);
+
+})
+.catch(err =>
+    console.log(err)
+);
 }
 
 async function loadLeaderboard(){
