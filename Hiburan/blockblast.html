@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Precast Block Blast</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:#f4f4f4;
+}
+
+
+
+#board{
+    width:400px;
+    height:400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:2px;
+}
+
+.cell{
+    background:white;
+    border:1px solid #ddd;
+    width:48px;
+    height:48px;
+}
+
+.filled{
+    background:#4caf50;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    max-width:900px;
+    margin:auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🟦 Precast Block Blast</h1>
+
+<h2>Score : <span id="score">0</span></h2>
+
+<h3>Balok Saat Ini</h3>
+<div id="piecePreview"></div>
+
+<div id="board"></div>
+
+<br>
+
+<button onclick="newGame()">
+Game Baru
+</button>
+
+<hr>
+
+<h2>🏆 Hall of Fame</h2>
+<div id="fame"></div>
+
+<h2>💩 Hall of Shame</h2>
+<div id="shame"></div>
+
+</div>
+
+<script src="blockblast.js"></script>
+
+</body>
+</html>

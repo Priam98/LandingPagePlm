@@ -1,0 +1,201 @@
+const board = document.getElementById("board");
+const scoreEl = document.getElementById("score");
+
+let score = 0;
+
+let gameBoard = Array(8).fill().map(() =>
+    Array(8).fill(0)
+);
+
+const pieces = [
+    [[1]],
+    [[1,1]],
+    [[1,1,1]],
+    [[1],[1]],
+    [[1],[1],[1]],
+    [[1,1],[1,1]]
+];
+
+let currentPiece = randomPiece();
+
+function randomPiece(){
+    return pieces[Math.floor(Math.random()*pieces.length)];
+}
+
+function drawBoard(){
+
+    board.innerHTML = "";
+
+    for(let row=0; row<8; row++){
+
+        for(let col=0; col<8; col++){
+
+            const cell = document.createElement("div");
+
+            cell.className = "cell";
+
+            if(gameBoard[row][col]){
+                cell.classList.add("filled");
+            }
+
+            cell.onclick = () => placePiece(row,col);
+
+            board.appendChild(cell);
+        }
+    }
+
+    scoreEl.innerText = score;
+}
+
+function canPlace(piece,row,col){
+
+    for(let r=0;r<piece.length;r++){
+
+        for(let c=0;c<piece[r].length;c++){
+
+            if(piece[r][c]){
+
+                let rr = row+r;
+                let cc = col+c;
+
+                if(rr>=8 || cc>=8){
+                    return false;
+                }
+
+                if(gameBoard[rr][cc]){
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+}
+
+function placePiece(row,col){
+
+    if(!canPlace(currentPiece,row,col)){
+        return;
+    }
+
+    for(let r=0;r<currentPiece.length;r++){
+
+        for(let c=0;c<currentPiece[r].length;c++){
+
+            if(currentPiece[r][c]){
+
+                gameBoard[row+r][col+c] = 1;
+                score++;
+            }
+        }
+    }
+
+    cekClear();
+
+    currentPiece = randomPiece();
+
+    if(gameOver()){
+        alert("💀 Game Over\nScore: "+score);
+    }
+
+    drawBoard();
+}
+
+function cekClear(){
+
+    // baris
+
+    for(let row=0;row<8;row++){
+
+        if(gameBoard[row].every(cell => cell)){
+
+            gameBoard[row].fill(0);
+
+            score += 100;
+        }
+    }
+
+    // kolom
+
+    for(let col=0;col<8;col++){
+
+        let penuh = true;
+
+        for(let row=0;row<8;row++){
+
+            if(gameBoard[row][col]===0){
+
+                penuh = false;
+                break;
+            }
+        }
+
+        if(penuh){
+
+            for(let row=0;row<8;row++){
+                gameBoard[row][col] = 0;
+            }
+
+            score += 100;
+        }
+    }
+}
+
+function gameOver(){
+
+    for(let row=0;row<8;row++){
+
+        for(let col=0;col<8;col++){
+
+            if(canPlace(currentPiece,row,col)){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+function drawPreview(){
+
+    const preview = document.getElementById("piecePreview");
+
+    preview.innerHTML = "";
+
+    preview.style.gridTemplateColumns =
+        `repeat(${currentPiece[0].length},25px)`;
+
+    for(let r=0;r<currentPiece.length;r++){
+
+        for(let c=0;c<currentPiece[r].length;c++){
+
+            const cell = document.createElement("div");
+
+            cell.className="preview-cell";
+
+            if(currentPiece[r][c]){
+                cell.classList.add("preview-filled");
+            }
+
+            preview.appendChild(cell);
+        }
+    }
+}
+
+
+drawBoard();
+scoreEl.innerText = score;
+drawPreview();
+
+function newGame(){
+
+    score = 0;
+
+    gameBoard = Array(8)
+        .fill()
+        .map(()=>Array(8).fill(0));
+
+    currentPiece = randomPiece();
+
+    drawBoard();
+}
