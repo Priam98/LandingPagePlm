@@ -63,8 +63,8 @@ function drawBoard(){
                 cell.classList.add("filled");
             }
 // fitur baru
-            cell.dataset.row = row;
-            cell.dataset.col = col;
+           //ell.dataset.row = row;
+           //ell.dataset.col = col;
 // batas fitur baru
             cell.onclick =
                 () => placePiece(row,col);
