@@ -3,6 +3,7 @@
 const game = new Chess();
 
 let gameSelesai = false;
+let kaburTercatat = false;
 
 let playerName = localStorage.getItem("currentPlayer") || "Ga berani kasih nama";
 
@@ -66,6 +67,23 @@ function tambahKalah() {
         })
     });
 }
+
+function tambahKabur() {
+
+    if (kaburTercatat) return;
+
+    kaburTercatat = true;
+
+    fetch("https://script.google.com/macros/s/AKfycbwCFMJzeWu_gSdlKvWOxiSx15GtUNTErL3PWkbRV-VdDpYrLY0zZaS3w6LFl0XaH8l2jg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            nama: playerName,
+            hasil: "Kabur",
+            langkah: game.history().length
+        })
+    });
+}
+
 
 const board = Chessboard('board', {
     draggable: true,
@@ -151,7 +169,6 @@ function cekStatus() {
     let status = "";
 
     if (game.in_checkmate()) {
-
         if (game.turn() === 'w') {
             status = "Cih, CUPU😏";
             if (!gameSelesai) {gameSelesai = true;
@@ -161,24 +178,34 @@ function cekStatus() {
             if (!gameSelesai) {gameSelesai=true;
             tambahMenang();}
         }}
-
     } else if (game.in_draw()) {
 
-        status = "🤝 Remis.";
+    gameSelesai = true;
 
+    status = "🤝 Remis.";
     } else {
-
         status =
             (game.turn() === 'w')
             ? "♔ Giliran lu, main yang putih, jangan blunder."
             : "♚ AI sedang mencari kesalahan gerakanmu, sabar ya.";
     }
-
     document.getElementById("status").innerText =
         status;
 }
 
 function newGame() {
+
+    if (
+        !gameSelesai &&
+        game.history().length >= 10
+    ) {
+
+        tambahKabur();
+
+    }
+
+    gameSelesai = false;
+    kaburTercatat = false;
 
     game.reset();
 
@@ -188,6 +215,21 @@ function newGame() {
         "Game baru dimulai.";
 
 }
+
+window.addEventListener("beforeunload", () => {
+
+    if (
+        !gameSelesai &&
+        game.history().length >= 10
+    ) {
+
+        tambahKabur();
+
+    }
+
+});
+
+
 
 updateLeaderboard();
 document.getElementById("playerName").value = playerName;
