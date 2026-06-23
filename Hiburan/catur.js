@@ -228,6 +228,7 @@ async function loadLeaderboard() {
 
     document.getElementById("hallOfFame").innerHTML =
         data.fame
+        .filter(x => x[0])
         .map(
             (x,i)=>
             `${i+1}. ${x[0]} - ${x[1]} kemenangan`
@@ -236,6 +237,7 @@ async function loadLeaderboard() {
 
     document.getElementById("hallOfShame").innerHTML =
         data.shame
+        .filter(x => x[0])
         .map(
             (x,i)=>
             `${i+1}. ${x[0]} - ${x[1]} kekalahan`
@@ -244,6 +246,7 @@ async function loadLeaderboard() {
 
     document.getElementById("kabur").innerHTML =
         data.kabur
+        .filter(x => x[0])
         .map(
             (x,i)=>
             `${i+1}. ${x[0]} - ${x[1]} kali kabur`
