@@ -20,22 +20,6 @@ localStorage.setItem("currentPlayer", playerName);
 }
 
 
-function updateLeaderboard() {
-    const fame = Object.entries(stats)
-        .sort((a, b) => b[1].menang - a[1].menang);
-    const shame = Object.entries(stats)
-        .sort((a, b) => b[1].kalah - a[1].kalah);
-
-    document.getElementById("hallOfFame").innerHTML =
-        fame.slice(0, 5)
-        .map(
-            (x,i) => `${i+1}. ${x[0]} - ${x[1].menang} kemenangan`).join("<br>");
-    document.getElementById("hallOfShame").innerHTML =
-        shame.slice(0, 5)
-        .map(
-            (x,i) => `${i+1}. ${x[0]} - ${x[1].kalah} kekalahan`).join("<br>");
-}
-
 function tambahMenang() {
     if (!stats[playerName]) {
         stats[playerName] = { menang: 0, kalah: 0 };
@@ -233,3 +217,39 @@ window.addEventListener("beforeunload", () => {
 
 updateLeaderboard();
 document.getElementById("playerName").value = playerName;
+
+async function loadLeaderboard() {
+
+    const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbxwBALVndYdzeQASDOaRERHIN06A8GJBXmfkY_30yQG23Ti-cbJUSOpTM80LAD4lO-7hQ/exec"
+    );
+
+    const data = await response.json();
+
+    document.getElementById("hallOfFame").innerHTML =
+        data.fame
+        .map(
+            (x,i)=>
+            `${i+1}. ${x[0]} - ${x[1]} kemenangan`
+        )
+        .join("<br>");
+
+    document.getElementById("hallOfShame").innerHTML =
+        data.shame
+        .map(
+            (x,i)=>
+            `${i+1}. ${x[0]} - ${x[1]} kekalahan`
+        )
+        .join("<br>");
+
+    document.getElementById("kabur").innerHTML =
+        data.kabur
+        .map(
+            (x,i)=>
+            `${i+1}. ${x[0]} - ${x[1]} kali kabur`
+        )
+        .join("<br>");
+
+}
+
+loadLeaderboard();
