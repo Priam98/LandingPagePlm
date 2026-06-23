@@ -18,6 +18,8 @@ function savePlayerName() {
 localStorage.setItem("currentPlayer", playerName);
     alert("Nama disimpan: " + playerName);
 }
+//hatihati
+loadLeaderboard();
 
 
 function tambahMenang() {
