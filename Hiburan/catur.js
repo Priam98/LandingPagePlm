@@ -204,7 +204,7 @@ window.addEventListener("beforeunload", () => {
 
     if (
         !gameSelesai &&
-        game.history().length >= 10
+        game.history().length >= 3
     ) {
 
         tambahKabur();
