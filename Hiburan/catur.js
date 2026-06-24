@@ -152,31 +152,41 @@ function onDrop(source, target) {
 
 function cekStatus() {
 
-    let status = "";
+if (game.in_checkmate()) {
 
-    if (game.in_checkmate()) {
-        if (game.turn() === 'w') {
-            status = "Cih, CUPU😏";
-            if (!gameSelesai) {gameSelesai = true;
+    if (game.turn() === 'w') {
+
+        status = "Cih, CUPU😏";
+
+        if (!gameSelesai) {
+            gameSelesai = true;
             tambahKalah();
-        } else {
-            status = "Hoki doang😏";
-            if (!gameSelesai) {gameSelesai=true;
-            tambahMenang();}
-        }}
-    } else if (game.in_draw()) {
+        }
+
+    } else {
+
+        status = "Hoki doang😏";
+
+        if (!gameSelesai) {
+            gameSelesai = true;
+            tambahMenang();
+        }
+
+    }
+
+} else if (game.in_draw()) {
 
     gameSelesai = true;
-
     status = "🤝 Remis.";
-    } else {
-        status =
-            (game.turn() === 'w')
-            ? "♔ Giliran lu, main yang putih, jangan blunder."
-            : "♚ AI sedang mencari kesalahan gerakanmu, sabar ya.";
-    }
-    document.getElementById("status").innerText =
-        status;
+
+} else {
+
+    status =
+        (game.turn() === 'w')
+        ? "♔ Giliran lu, main yang putih, jangan blunder."
+        : "♚ AI sedang mencari kesalahan gerakanmu, sabar ya.";
+
+}
 }
 
 function newGame() {
