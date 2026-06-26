@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family:Segoe UI,sans-serif;
+    font-family:-apple-system, BlinkMacSystemFont,"Segoe UI", Roboto;
     background:#f3f6fb;
     color:#333;
 }
@@ -211,3 +211,18 @@ footer{
         position:relative;
         z-index: 9999;
       }
+@keyframes navbg{
+    to {
+        background: white;
+        color: #e8eef8;
+    }
+}
+
+nav {
+    position: sticky;
+    background: transparent;
+    animation: navbg linear;
+    animation-timeline: scroll();
+    animation-range: 0px 200px;
+    animation-fill-mode: forwards;
+}
