@@ -86,3 +86,25 @@ function bukaDrawing(){
     }
 
 };
+
+
+const themeBtn = document.getElementById("themeBtn");
+
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme==="dark"){
+    document.body.classList.add("dark");
+    themeBtn.textContent="☀️";
+}
+
+themeBtn.addEventListener("click",()=>{
+
+    document.body.classList.toggle("dark");
+
+    const dark=document.body.classList.contains("dark");
+
+    localStorage.setItem("theme",dark?"dark":"light");
+
+    themeBtn.textContent=dark?"☀️":"🌙";
+
+});

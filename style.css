@@ -1,3 +1,30 @@
+:root{
+    --bg:#f3f6fb;
+    --text:#333;
+    --card:#ffffff;
+    --title:#005fa3;
+    --subtitle:#666;
+    --button:#4fa3ff;
+    --button-hover:#2789f5;
+    --year:#e8eef8;
+    --footer:#ffd84d;
+    --shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+body.dark{
+    --bg:#0f172a;
+    --text:#f1f5f9;
+    --card:#1e293b;
+    --title:#60a5fa;
+    --subtitle:#cbd5e1;
+    --button:#2563eb;
+    --button-hover:#3b82f6;
+    --year:#334155;
+    --footer:#1e293b;
+    --shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+
 *{
     margin:0;
     padding:0;
@@ -6,8 +33,8 @@
 
 body{
     font-family:-apple-system, BlinkMacSystemFont,"Segoe UI", Roboto;
-    background:#f3f6fb;
-    color:#333;
+    background:var(--bg);
+    color:var(--text);
 }
 
 .container{
@@ -54,11 +81,11 @@ header{
 }
 
 header h1{
-    color:#005fa3;
+    color:var(--title);
 }
 
 header p{
-    color:#666;
+    color:var(--subtitle);
 }
 
 .grid{
@@ -68,10 +95,10 @@ header p{
 }
 
 .card{
-    background:white;
+    background:var(--card);
     padding:20px;
     border-radius:15px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
+    box-shadow:var(--shadow);
     opacity:0;
     transform:translateY(20px);
     animation:fadeInUp 0.5s forwards;
@@ -87,7 +114,7 @@ header p{
 
 .card h2{
     margin-bottom:15px;
-    color:#005fa3;
+    color:var(--title);
     z-index: 2;
 }
 
@@ -95,7 +122,7 @@ header p{
     display:block;
     text-decoration:none;
     color:white;
-    background:#4fa3ff;
+    background:var(--button);
     margin:8px 0;
     padding:12px;
     border-radius:10px;
@@ -106,19 +133,20 @@ header p{
 
 .card a:hover{
     transform:translateY(-2px);
-    background:#2789f5;
+    background:var(--button-hover);
 }
 
 .year-btn{
     width:100%;
     border:none;
     cursor:pointer;
-    background:#e8eef8;
+    background:var(--year);
     padding:12px;
     border-radius:10px;
     margin-top:10px;
     text-align:left;
     font-weight:bold;
+    color:var(--text)
 }
 
 .year-content{
@@ -139,8 +167,9 @@ footer{
     margin-top:30px;
     text-align:center;
     padding:20px;
-    background:#ffd84d;
+    background:var(--footer);
     font-weight:bold;
+    color:var(--text);
 }
 .wa-container{
     display:flex;
@@ -176,7 +205,7 @@ footer{
 #quotes{
     margin-top: 15px;
     font-style: italic;
-    color: #666;
+    color:var(--subtitle);
     font-size:0.85rem;
 }
 
@@ -225,4 +254,8 @@ nav {
     animation-timeline: scroll();
     animation-range: 0px 200px;
     animation-fill-mode: forwards;
+}
+
+*{
+    transition: background .3s,color .3s,border-color .3s;
 }
