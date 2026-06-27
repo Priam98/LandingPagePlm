@@ -257,5 +257,5 @@ nav {
 }
 
 *{
-    transition: background .3s,color .3s,border-color .3s;
+    transition: background 1s,color 1s,border-color 1s;
 }
