@@ -242,7 +242,7 @@ window.addEventListener("beforeunload", () => {
 
 
 
-updateLeaderboard();
+
 document.getElementById("playerName").value = playerName;
 
 async function loadLeaderboard() {
