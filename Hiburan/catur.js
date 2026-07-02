@@ -107,8 +107,17 @@ engine.onmessage = function(event) {
 
         const move = msg.split(" ")[1];
 
-        if (move === "(none)") {
+    if (move === "(none)") {
+
+        console.log("NONE");
+        console.log("checkmate =", game.in_checkmate());
+
     cekStatus();
+
+        console.log(
+            document.getElementById("status").innerText
+    );
+
     return;
 };
 
