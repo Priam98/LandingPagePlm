@@ -107,7 +107,10 @@ engine.onmessage = function(event) {
 
         const move = msg.split(" ")[1];
 
-        if (move === "(none)") return;
+        if (move === "(none)") {
+    cekStatus();
+    return;
+};
 
         game.move({
             from: move.substring(0,2),
@@ -137,17 +140,21 @@ function onDrop(source, target) {
 
     cekStatus();
 
-    setTimeout(() => {
+if (gameSelesai) {
+    return;
+}
 
-        engine.postMessage(
-            "position fen " + game.fen()
-        );
-// Pakai depth 5 untuk AI yang lebih manusiawi, atau depth 20 untuk AI yang lebih kuat (tapi lebih lambat)
-        engine.postMessage(
-            "go depth 12"
-        );
+setTimeout(() => {
 
-    }, 200);
+    engine.postMessage(
+        "position fen " + game.fen()
+    );
+    //Biar normal pake depth 5
+    engine.postMessage(
+        "go depth 12"
+    );
+
+}, 200);
 }
 
 function cekStatus() {
@@ -187,6 +194,7 @@ if (game.in_checkmate()) {
         : "♚ AI sedang mencari kesalahan gerakanmu, sabar ya.";
 
 }
+    document.getElementById("status").innerText = status;
 }
 
 function newGame() {
