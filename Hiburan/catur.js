@@ -29,7 +29,6 @@ function tambahMenang() {
 }
     stats[playerName].menang++;
     localStorage.setItem("stats", JSON.stringify(stats));
-    updateLeaderboard();
     fetch("https://script.google.com/macros/s/AKfycbwCFMJzeWu_gSdlKvWOxiSx15GtUNTErL3PWkbRV-VdDpYrLY0zZaS3w6LFl0XaH8l2jg/exec", {
         method: "POST",
         body: JSON.stringify({
