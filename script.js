@@ -108,3 +108,31 @@ themeBtn.addEventListener("click",()=>{
     themeBtn.textContent=dark?"☀️":"🌙";
 
 });
+
+
+const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1zndJAe7HMZegvf3ghwQBHmeCYJ4IFbxPHP4TvLouLbfRQ/exec";
+
+async function loadStatusAlat() {
+
+    const res = await fetch(API);
+    const data = await res.json();
+
+    const container = document.getElementById("status-list");
+
+    container.innerHTML = "";
+
+    data.forEach(item => {
+
+        container.innerHTML += `
+            <div class="status-item">
+                <strong>${item.alat}</strong><br>
+                ${item.kode}<br>
+                ${item.status}
+            </div>
+        `;
+
+    });
+
+}
+
+loadStatusAlat();
