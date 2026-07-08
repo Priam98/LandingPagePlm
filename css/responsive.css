@@ -1,0 +1,151 @@
+@media (max-width: 1180px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav-links a {
+        padding-inline: 9px;
+        font-size: 0.88rem;
+    }
+
+    .search-box {
+        width: min(300px, 30vw);
+    }
+}
+
+@media (max-width: 920px) {
+    :root {
+        --navbar-height: 66px;
+    }
+
+    .container,
+    .nav-shell,
+    footer {
+        width: min(100% - 28px, 760px);
+    }
+
+    .nav-shell {
+        justify-content: space-between;
+    }
+
+    .nav-menu-btn {
+        display: block;
+    }
+
+    .nav-panel {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: calc(var(--navbar-height) + 8px);
+        display: grid;
+        gap: 14px;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        transform: translateY(-8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-panel.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .nav-links a {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--card);
+    }
+
+    .nav-actions {
+        align-items: stretch;
+    }
+
+    .search-box {
+        width: 100%;
+        flex: 1;
+    }
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    #status-list {
+        max-height: 360px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container,
+    .nav-shell,
+    footer {
+        width: min(100% - 22px, 480px);
+    }
+
+    .nav-brand span {
+        display: none;
+    }
+
+    .nav-links,
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-actions {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    .search-box button {
+        padding-inline: 12px;
+    }
+
+    .hero {
+        min-height: 230px;
+        padding: 34px 10px 26px;
+    }
+
+    .hero-logo-wrap {
+        width: 74px;
+        height: 74px;
+        border-radius: 20px;
+    }
+
+    .logo {
+        width: 58px;
+        height: 58px;
+    }
+
+    #quotes {
+        border-radius: 18px;
+        min-height: 52px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .footer-inner {
+        display: grid;
+        justify-items: start;
+    }
+}

@@ -4,41 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Portal Internal Plant P4 Palembang</title>
-
-    <link rel="icon" type="image/png" href="logo.png">
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="search-box">
-                <input type="text"
-                id="searchInput"
-                placeholder="Powered by ChatGPT, ketik nama file yang ingin dicari...">
-                <button onclick="cari()">Cari</button>
+    <nav class="top-navbar" id="topNavbar">
+        <div class="nav-shell">
+            <a class="nav-brand" href="#beranda" aria-label="Beranda">
+                <img src="logo.png" alt="Logo Megacon">
+                <span>Plant P4</span>
+            </a>
+
+            <button class="nav-menu-btn" id="navMenuBtn" type="button" aria-label="Buka menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-panel" id="navPanel">
+                <div class="nav-links">
+                    <a href="#beranda">Beranda</a>
+                    <a href="#operasional">Operasional</a>
+                    <a href="#produksi">Produksi</a>
+                    <a href="#outstanding">Outstanding</a>
+                    <a href="#form">Form</a>
+                    <a href="#admin">Admin</a>
+                    <a href="#hiburan">Hiburan</a>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Cari spreadsheet...">
+                        <button type="button" onclick="cari()">Cari</button>
+                    </div>
+                    <button id="themeBtn" type="button" aria-label="Ganti tema">🌙</button>
+                </div>
             </div>
-            <div id="hasilCari" class="hasil-cari"></div>
-            <img src="logo.png" class="logo" alt="Logo" id="logo">
-            <h1>PT. MEGACON BANGUN PERKASA PLANT P4-PALEMBANG</h1>
-            <p>Portal Spreadsheet Plant</p>
-            <button id="themeBtn">🌙</button>
+        </div>
+        <div id="hasilCari" class="hasil-cari"></div>
+    </nav>
+
+    <div class="container">
+        <header class="hero" id="beranda">
+            <div class="hero-logo-wrap">
+                <img src="logo.png" class="logo" alt="Logo" id="logo">
+            </div>
+            <p class="hero-kicker">PT. MEGACON BANGUN PERKASA</p>
+            <h1>PLANT P4 PALEMBANG</h1>
+            <p class="hero-subtitle">Portal Spreadsheet Plant</p>
             <p id="quotes"></p>
         </header>
-        <main>
 
+        <main class="dashboard-layout">
+            <aside class="sidebar" aria-label="Sidebar status alat">
+                <section class="status-widget" id="status">
+                <h3>Status Alat</h3>
+                <div id="status-list">
+                    Loading...
+                </div>
+            </section>
+            </aside>
 
-   
-
-                
-            <div class="grid">
-
-                <!-- OPERASIONAL -->
-                <section class="card">
-                    <h2>Operasional</h2>
+            <section class="dashboard-content" aria-label="Dashboard menu">
+                <div class="section-heading">
+                    <span>Dashboard</span>
+                    <h2>Portal Operasional Plant</h2>
+                </div>
+                <div class="grid">
+                    <section class="card" id="operasional">
+                    <h2><span class="card-icon">📊</span>Operasional</h2>
+                    <div class="card-scroll">
 
                     <a href="https://docs.google.com/spreadsheets/d/1KS8bg-QVUYAn0CtYT_rPS1IIutxYRPM1fduXpkN1QUs/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Memo Pengiriman</a>
                     <a href="https://docs.google.com/spreadsheets/d/1QB381OarG2fA_WblxB69lO51-Jlh6a9SM2MgU28u_ek/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Memo Produksi</a>
@@ -48,11 +89,11 @@
                     <a href="https://docs.google.com/spreadsheets/d/1PoRhHdT_34LjAi5Wm9w8mfPmktxUNC7fZwmP2RRkRqc/edit?gid=1927320199#gid=1927320199" target="_blank" rel="noopener noreferrer">Data Gudang</a>
                     <a href="https://docs.google.com/spreadsheets/d/17lfwXS8x4hhEAnKCbcrw6M9mqDPaceWDfup9CpugqNY/edit?gid=292009842#gid=292009842" target="_blank" rel="noopener noreferrer">Laporan Hasil Produksi Harian</a>
                     <a href="https://docs.google.com/spreadsheets/d/1m036m5V3KIbVU6l2AqkcY3f9Jtkp9O2pu9LcS2qIAYI/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Laporan Produktifitas Mingguan</a>
+                    </div>
                 </section>
 
-                <!-- DATA PRODUKSI -->
-                <section class="card">
-                    <h2>Data Produksi</h2>
+<section class="card" id="produksi">
+                    <h2><span class="card-icon">🏗️</span>Produksi</h2>
 
                     <button class="year-btn">▶ 2026</button>
                     <div class="year-content">
@@ -104,9 +145,8 @@
                     </div>
                 </section>
 
-                <!-- DATA OUTSTANDING -->
-                <section class="card">
-                    <h2>Data Outstanding</h2>
+<section class="card" id="outstanding">
+                    <h2><span class="card-icon">📌</span>Outstanding</h2>
 
                     <button class="year-btn">▶ 2026</button>
                     <div class="year-content">
@@ -157,9 +197,8 @@
                     </div>
                 </section>
 
-                <!-- FORM -->
-                <section class="card">
-                    <h2>Form</h2>
+<section class="card" id="form">
+                    <h2><span class="card-icon">📝</span>Form</h2>
 
                     <a href="https://linktr.ee/Ceklist" target="_blank" rel="noopener noreferrer">Checklist Alat</a>
                     <a href="develop.html" target="_blank" rel="noopener noreferrer">Checklist Quality</a>
@@ -169,13 +208,12 @@
                     <a href="https://forms.gle/W2zFL7pZdSWW23CVA" target="_blank" rel="noopener noreferrer">Barang Gudang Keluar</a>
                 </section>
 
-                <!-- ADMIN -->
-                <section class="card">
-                    <h2>Admin</h2>
+<section class="card" id="admin">
+                    <h2><span class="card-icon">📒</span>Admin</h2>
 
 
                     <a href="https://drive.google.com/drive/folders/1awIa6SqEpjdmqfy8NPSbWGMERsTfoThp?usp=drive_link" target="_blank" rel="noopener noreferrer">Monthly Report</a>
-                    <a href="laporan keuangan.html" class="kabur">Laporan Keuangan</a>
+                    <a href="laporan keuangan.html">Laporan Keuangan</a>
                     <a href="javascript:void(0)" onclick="bukaDrawing()">Shop Drawing</a>
                     <a href="develop.html">Sertifikat Kalibrasi</a>
                     <a href="https://megacon.digitalasiasolusindo.com/app/home" target="_blank" rel="noopener noreferrer">Megacon ERP</a>
@@ -183,58 +221,42 @@
                     
                 </section>
 
-              <section class="card">
-                    <h2>Hiburan</h2>
+<section class="card" id="hiburan">
+                    <h2><span class="card-icon">🎮</span>Hiburan</h2>
 
                     <a href="Hiburan/catur.html">Catur</a>
                     <a href="Hiburan/blockblast.html">Blockblast</a>
                 </section>
-
-
-            </div>
-
-
+                </div>
+            </section>
         </main>
-
     </div>
 
     <footer>
-        <div>
-            Version 1.2.0
+        <div class="footer-inner">
+            <span>Version 2.0</span>
         </div>
-
-        <div>
-            SPACE IKLAN DISEWAKAN | HUB: 0813-8043-6978
+        <div class="wa-container">
+            <a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer" class="wa-btn">
+                <img src="whatsapp.png" alt="WhatsApp">
+            </a>
         </div>
-            <div class="wa-container">
-                <a href="https://wa.me/6281380436978" 
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="wa-btn">
-                 <img src="whatsapp.png" alt="WhatsApp">
-                 Hubungi Developer
-                </a>
-            </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="navbar.js"></script>
     <!-- Cloudflare Web Analytics -->
-     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' 
-     data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'>
-    </script>
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'></script>
     <!-- End Cloudflare Web Analytics -->
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JFY0KPPQ1H');
-</script>
-
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JFY0KPPQ1H');
+    </script>
 </body>
 
 </html>

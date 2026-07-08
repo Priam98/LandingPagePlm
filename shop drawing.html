@@ -1,80 +1,58 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOP DRAWING</title>
-    <link rel="stylesheet" href="style2.css">
+    <title>Shop Drawing</title>
+    <link rel="icon" type="image/svg+xml" href="logo.png">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
-
 <body>
-    <div class="container"></div>
-        <header>
-            <img src="logo.png" alt="Logo" class="logo" onclick="window.location.href='index.html'">
-            <h1>SHOP DRAWING</h1>
-            <p>Kalau yang ini buat nyimpen file gambar</p>
-                        <button id="themeBtn">🌙</button>
+    <nav class="page-nav">
+        <div class="page-nav-inner">
+            <a class="page-brand" href="index.html"><img src="logo.png" alt="Logo"><span>Plant P4</span></a>
+            <button id="themeBtn" type="button" aria-label="Ganti tema">🌙</button>
+        </div>
+    </nav>
+    <main class="page-shell">
+        <header class="page-hero">
+            <h1>Shop Drawing</h1>
+            <p>Dashboard dokumen gambar produksi dan kebutuhan custom.</p>
         </header>
-        <main>
-            <div class="grid">
-                <!SHOP DRAWING>
-                <section class="card">
-                    <h2>Box Culvert</h2>
+        <div class="grid">
+            <section class="card">
+                    <h2><span class="card-icon">📦</span>Box Culvert</h2>
                     <a href="https://drive.google.com/drive/folders/1ZRCcBipNBiyFkU0tLdsMl8Uk4tSntvm7?usp=drive_link" target="_blank" rel="noopener noreferrer">Box Culvert</a>
                 </section>
-
-                <section class="card">
-                    <h2>U-Ditch</h2>
+<section class="card">
+                    <h2><span class="card-icon">🧱</span>U-Ditch</h2>
                     <a href="https://drive.google.com/drive/folders/1ZfCzPf6mMOhRRxTdWoh_PTvwHd4V2ntH?usp=drive_link" target="_blank" rel="noopener noreferrer">U-Ditch & Cover</a>
                 </section>
-
-                <section class="card custom">
-                    <h2>Custom</h2>
+<section class="card custom">
+                    <h2><span class="card-icon">🛠️</span>Custom</h2>
                     <a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer">Custom</a>
                     <a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer">Tidak Ketemu?</a>
                 </section>
-            </div>
-
-
-
-        </main>
-        <footer>
-        <div>
-            Version 1.2.0
         </div>
-
-        <div>
-            SPACE IKLAN DISEWAKAN | HUB: 0813-8043-6978
+    </main>
+    <footer>
+        <div class="footer-inner">
+            <span>Version 2.0</span>
         </div>
-
-            <div class="wa-container">
-                <a href="https://wa.me/6281380436978" 
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="wa-btn">
-                 <img src="whatsapp.png" alt="WhatsApp">
-                 Hubungi Developer
-                </a>
-            </div>
-
+        <div class="wa-container"><a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer" class="wa-btn"><img src="whatsapp.png" alt="WhatsApp"></a></div>
     </footer>
-
-        <!-- Cloudflare Web Analytics -->
-     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' 
-     data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'>
-     </script>
-        <!-- End Cloudflare Web Analytics -->
-
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JFY0KPPQ1H');
-</script>
-
-
+    <script src="page-theme.js"></script>
+    
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JFY0KPPQ1H');
+    </script>
 </body>
-            
 </html>
