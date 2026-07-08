@@ -277,3 +277,33 @@ footer {
     .page-brand span { display: none; }
     .card, .game-card { padding: 18px; }
 }
+
+
+/* Alignment fixes */
+.finance-grid {
+    grid-template-columns: minmax(280px, 560px);
+    justify-content: center;
+}
+
+.finance-grid .card {
+    width: 100%;
+}
+
+.finance-grid .card a {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.chess-card #board {
+    width: min(500px, 100%) !important;
+    max-width: 500px;
+    margin: 22px auto !important;
+    display: block;
+}
+
+.chess-card .status,
+.chess-card .quote {
+    width: min(560px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
