@@ -130,29 +130,38 @@ themeBtn.addEventListener("click",()=>{
 
 const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1zndJAe7HMZegvf3ghwQBHmeCYJ4IFbxPHP4TvLouLbfRQ/exec";
 
+const notyf = new Notyf({
+    duration: 5000,
+    position: {
+        x: "right",
+        y: "top"}});
+
+
 async function loadStatusAlat() {
+    try {
+        const res = await fetch(API + "?t=" + Date.now());
+        const data = await res.json();
 
-    const res = await fetch(API + "?t=" + Date.now());
-    const data = await res.json();
+        const container = document.getElementById("status-list");
+        container.innerHTML = "";
 
-    const container = document.getElementById("status-list");
+        data.forEach(item => {
+            container.innerHTML += `
+                <div class="status-item">
+                    <strong>${item.alat}</strong><br>
+                    ${item.kode}<br>
+                    ${item.status}
+                </div>
+            `;
+        });
 
-    container.innerHTML = "";
+        notyf.success(`Status ${data.length} alat berhasil dimuat`);
 
-    data.forEach(item => {
-
-        container.innerHTML += `
-            <div class="status-item">
-                <strong>${item.alat}</strong><br>
-                ${item.kode}<br>
-                ${item.status}
-            </div>
-        `;
-
-    });
-
+    } catch (err) {
+        console.error(err);
+        notyf.error("Gagal memuat status alat");
+    }
 }
-
 
 //Yg penting comment aja
 loadStatusAlat();
