@@ -136,7 +136,11 @@ async function loadStatusAlat() {
 }
 
 loadStatusAlat();
-setInterval(loadStatusAlat,60000);
-document.addEventListener(visibility change", () ==>{
+
+setInterval(loadStatusAlat, 60000);
+
+document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-    loadStatusAlat();}});
+        loadStatusAlat();
+    }
+});
