@@ -81,7 +81,7 @@ function cari() {
         Coba tanya developer 😅<br>
         Dia lebih tahu letak spreadsheetnya daripada aku.
     `,
-    footer: "Powered by ChatGPT 🤖",
+    footer: "Powered by ChatGPT",
     confirmButtonText: "Oke"
 });
 };
@@ -91,9 +91,9 @@ Swal.fire({
     title: "Masuk Shop Drawing?",
     html: `
         Anda akan memasuki area <b>Shop Drawing</b>.<br><br>
-        ☕ Siapkan kopi jika ingin memahami gambar kerja.
+        ☕ Siapkan kopi jika ingin memahami gambar kerja. Kopi sih ngga wajib, cuma disarankan, apalagi klo mau beliin developer ini kopi😅.
     `,
-    icon: "warning",
+    icon: "question",
     showCancelButton: true,
     confirmButtonText: "Masuk",
     cancelButtonText: "Batal"
