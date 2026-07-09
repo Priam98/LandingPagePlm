@@ -114,7 +114,7 @@ const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1znd
 
 async function loadStatusAlat() {
 
-    const res = await fetch(API);
+    const res = await fetch(API + "?t=" Date.now());
     const data = await res.json();
 
     const container = document.getElementById("status-list");
@@ -136,3 +136,7 @@ async function loadStatusAlat() {
 }
 
 loadStatusAlat();
+setInterval(loadStatusAlat,60000);
+document.addEventListener(visibility change", () ==>{
+    if (!document.hidden) {
+    loadStatusAlat();}});
