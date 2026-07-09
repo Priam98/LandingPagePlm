@@ -79,7 +79,7 @@ function cari() {
 function bukaDrawing(){
     const lanjut = confirm(
         "Anda akan memasuki area Shop Drawing.\n\n" +
-        "Mohon jangan berharap banyak, karena ini masih dalam tahap pengembangan. Tapi tenang aja, kalau kamu klik OK, kamu akan diarahkan ke halaman yang sedang dalam proses pembuatan. Jadi, harap bersabar ya! Terima kasih atas pengertiannya!"
+        "Silahkan sediakan kopi jika anda ingin mencoba memahami gambar kerja yang tersedia"
     );
     if (lanjut) {
         window.location.href = "shop drawing.html";
