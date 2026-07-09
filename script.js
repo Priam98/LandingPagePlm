@@ -163,7 +163,9 @@ async function loadStatusAlat() {
     }
 }
 
-//Yg penting comment aja
+notyf.success("Status alat sudah diperbarui");
+
+
 loadStatusAlat();
 
 setInterval(loadStatusAlat, 60000);
