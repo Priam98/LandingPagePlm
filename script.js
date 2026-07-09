@@ -21,6 +21,7 @@ years.forEach(button => {
 
 });
 
+/*
 const tombolKabur = 
 document.querySelector('.kabur');
 document.addEventListener('mousemove', (e) =>{
@@ -36,6 +37,7 @@ document.addEventListener('mousemove', (e) =>{
                           pesan[Math.floor(Math.random() * pesan.length)]
                      }
 });
+*/
                           
 const quotes = [
     "Bug yang konsisten itu bukan bug, tapi fitur",
