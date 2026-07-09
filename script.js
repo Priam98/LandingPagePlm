@@ -153,6 +153,8 @@ async function loadStatusAlat() {
 
 }
 
+
+//Yg penting comment aja
 loadStatusAlat();
 
 setInterval(loadStatusAlat, 60000);
