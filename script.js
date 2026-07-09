@@ -73,19 +73,35 @@ logo.addEventListener("click", () => {
 function cari() {
     const hasil = document.getElementById("hasilCari");
     const keyword = document.getElementById("searchInput").value;
-    alert(`Pencarian "${keyword}" tidak ditemukan.\n\n` + 
-        "Coba tanya developer, dia lebih tahu di mana letak spreadsheetnya daripada aku😅\n\n" + 
-        "Powered by ChatGPT");
+    Swal.fire({
+    icon: "error",
+    title: "Tidak ditemukan",
+    html: `
+        <b>${keyword}</b> tidak ditemukan.<br><br>
+        Coba tanya developer 😅<br>
+        Dia lebih tahu letak spreadsheetnya daripada aku.
+    `,
+    footer: "Powered by ChatGPT 🤖",
+    confirmButtonText: "Oke"
+});
 };
 
 function bukaDrawing(){
-    const lanjut = confirm(
-        "Anda akan memasuki area Shop Drawing.\n\n" +
-        "Silahkan sediakan kopi jika anda ingin mencoba memahami gambar kerja yang tersedia"
-    );
-    if (lanjut) {
+Swal.fire({
+    title: "Masuk Shop Drawing?",
+    html: `
+        Anda akan memasuki area <b>Shop Drawing</b>.<br><br>
+        ☕ Siapkan kopi jika ingin memahami gambar kerja.
+    `,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Masuk",
+    cancelButtonText: "Batal"
+}).then((result) => {
+    if (result.isConfirmed) {
         window.location.href = "shop drawing.html";
     }
+});
 
 };
 
