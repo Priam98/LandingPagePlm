@@ -114,7 +114,7 @@ const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1znd
 
 async function loadStatusAlat() {
 
-    const res = await fetch(API + "?t=" Date.now());
+    const res = await fetch(API + "?t=" + Date.now());
     const data = await res.json();
 
     const container = document.getElementById("status-list");
