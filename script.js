@@ -130,6 +130,8 @@ themeBtn.addEventListener("click",()=>{
 
 const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1zndJAe7HMZegvf3ghwQBHmeCYJ4IFbxPHP4TvLouLbfRQ/exec";
 
+let lastJson = "";
+
 const notyf = new Notyf({
     duration: 5000,
     position: {
@@ -141,6 +143,8 @@ async function loadStatusAlat() {
     try {
         const res = await fetch(API + "?t=" + Date.now());
         const data = await res.json();
+
+        const currentJson = JSON.stringify(data);
 
         const container = document.getElementById("status-list");
         container.innerHTML = "";
@@ -155,7 +159,11 @@ async function loadStatusAlat() {
             `;
         });
 
-        notyf.success(`Status ${data.length} alat berhasil dimuat`);
+        if (lastJson !== "" && lastJson !== currentJson) {
+            notyf.success("Status alat sudah diperbarui");
+        }
+
+        lastJson = currentJson;
 
     } catch (err) {
         console.error(err);
