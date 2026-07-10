@@ -163,8 +163,6 @@ async function loadStatusAlat() {
     }
 }
 
-notyf.success("Status alat sudah diperbarui");
-
 
 loadStatusAlat();
 
