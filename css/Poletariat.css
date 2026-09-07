@@ -1,0 +1,44 @@
+body.proletariat-mode {
+    filter: saturate(1.5);
+}
+
+#proletariat-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: rgba(120, 0, 0, 0.94);
+    color: white;
+
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#proletariat-overlay.active {
+    display: flex;
+}
+
+#proletariat-overlay h1 {
+    font-size: clamp(40px, 8vw, 100px);
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+#proletariat-overlay p {
+    font-size: 20px;
+    margin: 20px;
+}
+
+#proletariat-overlay button {
+    padding: 10px 20px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
