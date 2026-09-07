@@ -1,149 +1,278 @@
+/* =========================================================
+   PROLETARIAT MODE
+   ========================================================= */
+
 #proletariat-overlay {
     position: fixed;
     inset: 0;
+
     z-index: 999999;
 
     display: none;
+
     align-items: center;
     justify-content: center;
 
-    background: rgba(120, 0, 0, 0.96);
-    color: white;
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    background: rgba(125, 0, 0, 0.96);
+
+    color: #ffffff;
 
     font-family: "Courier New", monospace;
 }
+
+
+/* =========================================================
+   OVERLAY ACTIVE
+   ========================================================= */
 
 #proletariat-overlay.active {
     display: flex;
 }
 
-/* =========================
-   TERMINAL
-   ========================= */
 
-.proletariat-terminal {
-    width: min(800px, 85vw);
+/* =========================================================
+   TERMINAL
+   ========================================================= */
+
+#proletariat-terminal {
+    width: min(900px, 90vw);
+
+    color: #ffffff !important;
+
+    font-family: "Courier New", monospace !important;
+
     font-size: 18px;
+
+    line-height: 1.7;
+
+    text-align: left;
+
+    box-sizing: border-box;
 }
+
+
+/* =========================================================
+   TERMINAL OUTPUT
+   ========================================================= */
 
 #proletariat-terminal-output {
+    display: block !important;
+
     min-height: 220px;
-    white-space: pre-line;
-    line-height: 1.7;
+
+    width: 100%;
+
+    color: #ffffff !important;
+
+    background: transparent !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: break-word;
+
+    box-sizing: border-box;
 }
 
-#proletariat-status {
-    margin-top: 15px;
+
+/* =========================================================
+   CURSOR
+   ========================================================= */
+
+#proletariat-cursor {
+    color: #ffffff !important;
+
+    animation: proletariat-cursor-blink 0.8s infinite;
+
     font-weight: bold;
 }
 
-/* =========================
+
+@keyframes proletariat-cursor-blink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
    PROGRESS BAR
-   ========================= */
+   ========================================================= */
 
 #proletariat-progress-container {
     width: 100%;
-    height: 18px;
+
+    height: 20px;
 
     margin-top: 20px;
 
-    border: 2px solid white;
+    border: 2px solid #ffffff;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
+
 
 #proletariat-progress {
     width: 0%;
+
     height: 100%;
 
-    background: white;
+    background: #ffffff;
 
-    transition: width 0.1s linear;
+    transition: width 0.08s linear;
 }
 
-/* =========================
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+#proletariat-status {
+
+    margin-top: 15px;
+
+    color: #ffffff !important;
+
+    font-family: "Courier New", monospace !important;
+
+    font-weight: bold;
+
+    min-height: 28px;
+}
+
+
+/* =========================================================
    FINAL SCREEN
-   ========================= */
+   ========================================================= */
 
 #proletariat-final {
+
     display: none;
 
+    width: 100%;
+
     text-align: center;
+
+    color: #ffffff !important;
 }
+
 
 #proletariat-final.active {
     display: block;
 }
 
-.proletariat-title {
-    font-family: Arial, sans-serif;
-    font-size: clamp(45px, 8vw, 100px);
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+#proletariat-final .proletariat-title {
+
+    color: #ffffff !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: clamp(45px, 8vw, 110px);
+
     font-weight: 900;
 
+    line-height: 1;
+
     letter-spacing: 5px;
+
+    margin: 0;
 }
+
 
 #proletariat-final p {
-    font-family: Arial, sans-serif;
+
+    color: #ffffff !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
     font-size: 20px;
-    margin: 25px;
+
+    margin: 30px 0;
 }
 
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
 #close-proletariat {
+
     padding: 12px 24px;
 
-    border: 2px solid white;
+    border: 2px solid #ffffff;
+
+    border-radius: 0;
+
     background: transparent;
 
-    color: white;
+    color: #ffffff !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 16px;
 
     cursor: pointer;
 
-    font-size: 16px;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
+
 
 #close-proletariat:hover {
-    background: white;
-    color: #780000;
+
+    background: #ffffff;
+
+    color: #7d0000 !important;
 }
 
-/* =========================
-   FORCE TERMINAL VISIBILITY
-   ========================= */
 
-#proletariat-overlay .proletariat-terminal {
-    display: block !important;
-    visibility: visible !important;
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-    width: min(900px, 85vw) !important;
+@media (max-width: 600px) {
 
-    color: #ffffff !important;
-    background: transparent !important;
+    #proletariat-overlay {
+        padding: 20px;
+    }
 
-    font-family: "Courier New", monospace !important;
-    font-size: 18px !important;
-    line-height: 1.7 !important;
+    #proletariat-terminal {
+        width: 100%;
 
-    text-align: left !important;
-}
+        font-size: 14px;
+    }
 
-#proletariat-overlay #proletariat-terminal-output {
-    display: block !important;
-    visibility: visible !important;
+    #proletariat-terminal-output {
+        min-height: 200px;
+    }
 
-    min-height: 220px !important;
+    #proletariat-final .proletariat-title {
+        font-size: 42px;
 
-    color: #ffffff !important;
-    background: transparent !important;
+        letter-spacing: 2px;
+    }
 
-    opacity: 1 !important;
-
-    white-space: pre-wrap !important;
-    overflow: visible !important;
-}
-
-#proletariat-overlay #proletariat-status {
-    display: block !important;
-    visibility: visible !important;
-
-    color: #ffffff !important;
-    opacity: 1 !important;
 }
