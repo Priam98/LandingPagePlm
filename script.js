@@ -1,456 +1,183 @@
-(() => {
+const years = document.querySelectorAll('.year-btn');
 
-    "use strict";
+years.forEach(button => {
 
+    button.addEventListener('click', () => {
 
-    /* =====================================================
-       CONFIGURATION
-       ===================================================== */
+        const content =
+            button.nextElementSibling;
 
-    const SECRET = "KOMUNIS";
+        content.classList.toggle('active');
 
-    const CHAR_DELAY = 25;
-
-    const LINE_DELAY = 300;
-
-
-    /* =====================================================
-       ELEMENTS
-       ===================================================== */
-
-    const overlay =
-        document.getElementById("proletariat-overlay");
-
-    const terminal =
-        document.getElementById("proletariat-terminal");
-
-    const output =
-        document.getElementById("proletariat-terminal-output");
-
-    const cursor =
-        document.getElementById("proletariat-cursor");
-
-    const progressContainer =
-        document.getElementById("proletariat-progress-container");
-
-    const progress =
-        document.getElementById("proletariat-progress");
-
-    const status =
-        document.getElementById("proletariat-status");
-
-    const finalScreen =
-        document.getElementById("proletariat-final");
-
-    const closeButton =
-        document.getElementById("close-proletariat");
-
-
-    /* =====================================================
-       VALIDATION
-       ===================================================== */
-
-    if (
-        !overlay ||
-        !terminal ||
-        !output ||
-        !cursor ||
-        !progress ||
-        !status ||
-        !finalScreen ||
-        !closeButton
-    ) {
-
-        console.error(
-            "[PROLETARIAT] Easter egg elements tidak ditemukan."
-        );
-
-        return;
-    }
-
-
-    /* =====================================================
-       STATE
-       ===================================================== */
-
-    let inputBuffer = "";
-
-    let isRunning = false;
-
-
-    /* =====================================================
-       SECRET CODE DETECTOR
-       ===================================================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        /*
-         * Jangan aktif ketika user sedang mengetik
-         * di form / search box.
-         */
-
-        const target = event.target;
-
-        if (
-            target instanceof HTMLInputElement ||
-            target instanceof HTMLTextAreaElement ||
-            target.isContentEditable
-        ) {
-            return;
-        }
-
-
-        /*
-         * Hanya proses tombol satu karakter.
-         */
-
-        if (event.key.length !== 1) {
-            return;
-        }
-
-
-        inputBuffer += event.key.toUpperCase();
-
-
-        /*
-         * Simpan hanya sejumlah karakter SECRET.
-         */
-
-        if (inputBuffer.length > SECRET.length) {
-
-            inputBuffer =
-                inputBuffer.slice(-SECRET.length);
-
-        }
-
-
-        /*
-         * SECRET MATCH
-         */
-
-        if (
-            inputBuffer === SECRET &&
-            !isRunning
-        ) {
-
-            inputBuffer = "";
-
-            activateProletariat();
-
+        if(content.classList.contains('active')){
+            button.innerHTML =
+            button.innerHTML.replace('▶','▼');
+        }else{
+            button.innerHTML =
+            button.innerHTML.replace('▼','▶');
         }
 
     });
 
+});
 
-    /* =====================================================
-       ACTIVATE
-       ===================================================== */
+/*
+const tombolKabur = 
+document.querySelector('.kabur');
+document.addEventListener('mousemove', (e) =>{
+    const rect = tombolKabur.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = e.clientX - centerX;
+    const dy = e.clientY - centerY;
+    const jarak = Math.sqrt(dx*dx + dy*dy);
+    const pesan = ["Hayoo ngapain", "Kepooo yaaa", "Ga boleh ngintip lho", "Nah loh...."];
+    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*3}px, ${-dy*3}px)`;
+                      tombolKabur.textContent =
+                          pesan[Math.floor(Math.random() * pesan.length)]
+                     }
+});
+*/
+                          
+const quotes = [
+    "Bug yang konsisten itu bukan bug, tapi fitur",
+    "Spreadsheet adalah database yang tersesat",
+    "Hari tanpa error adalah bonus",
+    "Jika ragu, refresh saja dulu pake F5",
+    "Kalu jalan, errornya jalan juga",
+    "Developer ini sedang mencoba yang terbaik",
+    "Versi paling stabil itu yang belum dirilis",
+    "Data tidak akan hilang, Semoga😅",
+    "Jika tombol bergerak, itu bukan bug, tapi fitur interaktif",
+    "Developer sedang online, mungkin",
+    "Bug sudah diperbaiki, bug baru sedang dibuat",
+    "Kalau tombol tidak berfungsi, coba tatap dengan penuh amaran, mungkin dia butuh perhatian",
+    "Kalau tombol kabur, itu bukan bug, tapi fitur untuk melatih kecepatan mouse kamu"
+];
+document.getElementById('quotes').textContent =
+    "💡 " + quotes[Math.floor(Math.random() * quotes.length)]
+    ;
+    
 
-    async function activateProletariat() {
-
-        isRunning = true;
-
-
-        /*
-         * Reset UI
-         */
-
-        output.textContent = "";
-
-        progress.style.width = "0%";
-
-        status.textContent = "";
-
-        finalScreen.classList.remove("active");
-
-        terminal.style.display = "block";
+const logo = document.getElementById("logo");
+let klikLogo = 0;
+logo.addEventListener("click", () => {
+    klikLogo++;
+    if (klikLogo === 5) {
+        alert("Developer mode activated! Kamu menemukan rahasia tersembunyi! Selamat menikmati fitur rahasia ini!");
+        window.location.href = "laporan keuangan.html";
+        klikLogo = 0;
+    }});
 
 
-        /*
-         * Show overlay
-         */
+function cari() {
+    const hasil = document.getElementById("hasilCari");
+    const keyword = document.getElementById("searchInput").value;
+    Swal.fire({
+    icon: "error",
+    title: "Tidak ditemukan",
+    html: `
+        <b>${keyword}</b> tidak ditemukan.<br><br>
+        Coba tanya developer 😅<br>
+        Dia lebih tahu letak spreadsheetnya daripada aku.
+    `,
+    footer: "Powered by ChatGPT",
+    confirmButtonText: "Oke"
+});
+};
 
-        overlay.classList.add("active");
-
-
-        /*
-         * Jalankan boot sequence
-         */
-
-        await bootSequence();
-
+function bukaDrawing(){
+Swal.fire({
+    title: "Masuk Shop Drawing?",
+    html: `
+        Anda akan memasuki area <b>Shop Drawing</b>.<br><br>
+        ☕ Siapkan kopi jika ingin memahami gambar kerja. Kopi sih ngga wajib, cuma disarankan, apalagi klo mau beliin developer ini kopi😅.
+    `,
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Masuk",
+    cancelButtonText: "Batal"
+}).then((result) => {
+    if (result.isConfirmed) {
+        window.location.href = "shop drawing.html";
     }
+});
 
+};
 
-    /* =====================================================
-       BOOT SEQUENCE
-       ===================================================== */
 
-    async function bootSequence() {
+const themeBtn = document.getElementById("themeBtn");
 
-        const messages = [
+const savedTheme = localStorage.getItem("theme");
 
-            "> INITIALIZING PROLETARIAT SUBSYSTEM...",
+if(savedTheme==="dark"){
+    document.body.classList.add("dark");
+    themeBtn.textContent="☀️";
+}
 
-            "> CONNECTING TO PRODUCTION DATABASE...",
+themeBtn.addEventListener("click",()=>{
 
-            "> CHECKING PRODUCTION ............... OK",
+    document.body.classList.toggle("dark");
 
-            "> CHECKING QC ........................ OVERLOADED",
+    const dark=document.body.classList.contains("dark");
 
-            "> CHECKING EXCEL ..................... 47 FORMULAS",
+    localStorage.setItem("theme",dark?"dark":"light");
 
-            "> CHECKING COFFEE .................... CRITICAL",
+    themeBtn.textContent=dark?"☀️":"🌙";
 
-            "> CHECKING WORKLOAD .................. ERROR",
+});
 
-            "> SCANNING CAPITALISM ................ DETECTED",
 
-            "> PREPARING REVOLUTION ...............",
+const API = "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1zndJAe7HMZegvf3ghwQBHmeCYJ4IFbxPHP4TvLouLbfRQ/exec";
 
-            "> REMOVING CAPITALISM ................."
+let lastJson = "";
 
-        ];
+const notyf = new Notyf({
+    duration: 5000,
+    position: {
+        x: "right",
+        y: "top"}});
 
 
-        /*
-         * Ketik satu per satu.
-         */
+async function loadStatusAlat() {
+    try {
+        const res = await fetch(API + "?t=" + Date.now());
+        const data = await res.json();
 
-        for (const message of messages) {
+        const currentJson = JSON.stringify(data);
 
-            await typeText(message);
+        const container = document.getElementById("status-list");
+        container.innerHTML = "";
 
-            output.textContent += "\n";
-
-            await sleep(LINE_DELAY);
-
-        }
-
-
-        /*
-         * Progress bar
-         */
-
-        await runProgress();
-
-
-        /*
-         * Pesan final terminal
-         */
-
-        await typeText(
-            "> SYSTEM TAKEOVER COMPLETE."
-        );
-
-        output.textContent += "\n";
-
-
-        await sleep(500);
-
-
-        await typeText(
-            "> WELCOME, COMRADE."
-        );
-
-
-        status.textContent =
-            "☭ PROLETARIAT MODE ACTIVATED";
-
-
-        await sleep(1200);
-
-
-        /*
-         * Pindah ke final screen.
-         */
-
-        showFinalScreen();
-
-    }
-
-
-    /* =====================================================
-       TYPEWRITER EFFECT
-       ===================================================== */
-
-    async function typeText(text) {
-
-        for (const character of text) {
-
-            output.textContent += character;
-
-
-            /*
-             * Cursor selalu mengikuti teks.
-             */
-
-            output.scrollTop =
-                output.scrollHeight;
-
-
-            /*
-             * Kecepatan berbeda sedikit
-             * supaya terasa seperti terminal.
-             */
-
-            let delay = CHAR_DELAY;
-
-
-            if (character === " ") {
-
-                delay = 8;
-
-            }
-
-
-            if (
-                character === "." ||
-                character === ":"
-            ) {
-
-                delay = 60;
-
-            }
-
-
-            await sleep(delay);
-
-        }
-
-    }
-
-
-    /* =====================================================
-       PROGRESS BAR
-       ===================================================== */
-
-    function runProgress() {
-
-        return new Promise((resolve) => {
-
-            let value = 0;
-
-
-            const interval = setInterval(() => {
-
-                /*
-                 * Progress random supaya
-                 * tidak terlalu robotik.
-                 */
-
-                value +=
-                    Math.floor(
-                        Math.random() * 7
-                    ) + 2;
-
-
-                if (value >= 100) {
-
-                    value = 100;
-
-                    clearInterval(interval);
-
-                    progress.style.width =
-                        "100%";
-
-
-                    setTimeout(
-                        resolve,
-                        400
-                    );
-
-                    return;
-
-                }
-
-
-                progress.style.width =
-                    `${value}%`;
-
-            }, 100);
-
+        data.forEach(item => {
+            container.innerHTML += `
+                <div class="status-item">
+                    <strong>${item.alat}</strong><br>
+                    ${item.kode}<br>
+                    ${item.status}
+                </div>
+            `;
         });
 
-    }
-
-
-    /* =====================================================
-       SHOW FINAL SCREEN
-       ===================================================== */
-
-    function showFinalScreen() {
-
-        terminal.style.display = "none";
-
-        finalScreen.classList.add("active");
-
-    }
-
-
-    /* =====================================================
-       CLOSE / RETURN TO CAPITALISM
-       ===================================================== */
-
-    closeButton.addEventListener("click", () => {
-
-        overlay.classList.remove("active");
-
-
-        /*
-         * Reset semuanya supaya bisa
-         * dipanggil lagi nanti.
-         */
-
-        output.textContent = "";
-
-        progress.style.width = "0%";
-
-        status.textContent = "";
-
-        terminal.style.display = "block";
-
-        finalScreen.classList.remove("active");
-
-
-        isRunning = false;
-
-    });
-
-
-    /* =====================================================
-       ESC = RETURN TO CAPITALISM
-       ===================================================== */
-
-    document.addEventListener("keydown", (event) => {
-
-        if (
-            event.key === "Escape" &&
-            overlay.classList.contains("active")
-        ) {
-
-            closeButton.click();
-
+        if (lastJson !== "" && lastJson !== currentJson) {
+            notyf.success("Status alat sudah diperbarui");
         }
 
-    });
+        lastJson = currentJson;
 
-
-    /* =====================================================
-       SLEEP
-       ===================================================== */
-
-    function sleep(milliseconds) {
-
-        return new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    milliseconds
-                )
-        );
-
+    } catch (err) {
+        console.error(err);
+        notyf.error("Gagal memuat status alat");
     }
+}
 
 
-})();
+loadStatusAlat();
+
+setInterval(loadStatusAlat, 60000);
+
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+        loadStatusAlat();
+    }
+});
