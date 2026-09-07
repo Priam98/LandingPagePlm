@@ -114,6 +114,26 @@
         await runProgress();
 
 
+        async function typeText(text) {
+    for (const char of text) {
+
+        terminal.textContent += char;
+
+        let delay = 20;
+
+        if (char === " ") {
+            delay = 10;
+        }
+
+        if (char === "." || char === ":") {
+            delay = 80;
+        }
+
+        await sleep(delay);
+    }
+}
+
+
         terminal.textContent +=
             "\n> SYSTEM TAKEOVER COMPLETE.\n";
 
