@@ -104,3 +104,46 @@
     background: white;
     color: #780000;
 }
+
+/* =========================
+   FORCE TERMINAL VISIBILITY
+   ========================= */
+
+#proletariat-overlay .proletariat-terminal {
+    display: block !important;
+    visibility: visible !important;
+
+    width: min(900px, 85vw) !important;
+
+    color: #ffffff !important;
+    background: transparent !important;
+
+    font-family: "Courier New", monospace !important;
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+
+    text-align: left !important;
+}
+
+#proletariat-overlay #proletariat-terminal-output {
+    display: block !important;
+    visibility: visible !important;
+
+    min-height: 220px !important;
+
+    color: #ffffff !important;
+    background: transparent !important;
+
+    opacity: 1 !important;
+
+    white-space: pre-wrap !important;
+    overflow: visible !important;
+}
+
+#proletariat-overlay #proletariat-status {
+    display: block !important;
+    visibility: visible !important;
+
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
