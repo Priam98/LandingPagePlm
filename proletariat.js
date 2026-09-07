@@ -1,13 +1,37 @@
 (() => {
 
-    const secret = "KOMUNIS";
-    let input = "";
+    "use strict";
+
+
+    /* =====================================================
+       CONFIGURATION
+       ===================================================== */
+
+    const SECRET = "KOMUNIS";
+
+    const CHAR_DELAY = 25;
+
+    const LINE_DELAY = 300;
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
 
     const overlay =
         document.getElementById("proletariat-overlay");
 
     const terminal =
+        document.getElementById("proletariat-terminal");
+
+    const output =
         document.getElementById("proletariat-terminal-output");
+
+    const cursor =
+        document.getElementById("proletariat-cursor");
+
+    const progressContainer =
+        document.getElementById("proletariat-progress-container");
 
     const progress =
         document.getElementById("proletariat-progress");
@@ -22,62 +46,145 @@
         document.getElementById("close-proletariat");
 
 
-    // =========================
-    // SECRET CODE DETECTOR
-    // =========================
+    /* =====================================================
+       VALIDATION
+       ===================================================== */
+
+    if (
+        !overlay ||
+        !terminal ||
+        !output ||
+        !cursor ||
+        !progress ||
+        !status ||
+        !finalScreen ||
+        !closeButton
+    ) {
+
+        console.error(
+            "[PROLETARIAT] Easter egg elements tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       STATE
+       ===================================================== */
+
+    let inputBuffer = "";
+
+    let isRunning = false;
+
+
+    /* =====================================================
+       SECRET CODE DETECTOR
+       ===================================================== */
 
     document.addEventListener("keydown", (event) => {
 
-        // Jangan aktif saat mengetik di input/form
+        /*
+         * Jangan aktif ketika user sedang mengetik
+         * di form / search box.
+         */
+
+        const target = event.target;
+
         if (
-            event.target.tagName === "INPUT" ||
-            event.target.tagName === "TEXTAREA" ||
-            event.target.isContentEditable
+            target instanceof HTMLInputElement ||
+            target instanceof HTMLTextAreaElement ||
+            target.isContentEditable
         ) {
             return;
         }
 
-        input += event.key.toUpperCase();
 
-        // Batasi buffer
-        if (input.length > secret.length) {
-            input = input.slice(-secret.length);
+        /*
+         * Hanya proses tombol satu karakter.
+         */
+
+        if (event.key.length !== 1) {
+            return;
         }
 
-        // Secret code benar
-        if (input === secret) {
+
+        inputBuffer += event.key.toUpperCase();
+
+
+        /*
+         * Simpan hanya sejumlah karakter SECRET.
+         */
+
+        if (inputBuffer.length > SECRET.length) {
+
+            inputBuffer =
+                inputBuffer.slice(-SECRET.length);
+
+        }
+
+
+        /*
+         * SECRET MATCH
+         */
+
+        if (
+            inputBuffer === SECRET &&
+            !isRunning
+        ) {
+
+            inputBuffer = "";
 
             activateProletariat();
 
-            input = "";
         }
+
     });
 
 
-    // =========================
-    // AKTIFKAN MODE
-    // =========================
+    /* =====================================================
+       ACTIVATE
+       ===================================================== */
 
     async function activateProletariat() {
 
-        overlay.classList.add("active");
+        isRunning = true;
 
-        finalScreen.classList.remove("active");
 
-        terminal.textContent = "";
+        /*
+         * Reset UI
+         */
+
+        output.textContent = "";
 
         progress.style.width = "0%";
 
         status.textContent = "";
+
+        finalScreen.classList.remove("active");
+
+        terminal.style.display = "block";
+
+
+        /*
+         * Show overlay
+         */
+
+        overlay.classList.add("active");
+
+
+        /*
+         * Jalankan boot sequence
+         */
 
         await bootSequence();
 
     }
 
 
-    // =========================
-    // BOOT SEQUENCE
-    // =========================
+    /* =====================================================
+       BOOT SEQUENCE
+       ===================================================== */
 
     async function bootSequence() {
 
@@ -97,61 +204,126 @@
 
             "> CHECKING WORKLOAD .................. ERROR",
 
-            "> CAPITALISM ......................... DETECTED",
+            "> SCANNING CAPITALISM ................ DETECTED",
+
+            "> PREPARING REVOLUTION ...............",
 
             "> REMOVING CAPITALISM ................."
 
         ];
 
 
+        /*
+         * Ketik satu per satu.
+         */
+
         for (const message of messages) {
+
             await typeText(message);
-            terminal.textContent += "\n";
-            await sleep(300);
+
+            output.textContent += "\n";
+
+            await sleep(LINE_DELAY);
+
         }
 
+
+        /*
+         * Progress bar
+         */
 
         await runProgress();
 
 
-        async function typeText(text) {
-    for (const char of text) {
+        /*
+         * Pesan final terminal
+         */
 
-        terminal.textContent += char;
+        await typeText(
+            "> SYSTEM TAKEOVER COMPLETE."
+        );
 
-        let delay = 20;
-
-        if (char === " ") {
-            delay = 10;
-        }
-
-        if (char === "." || char === ":") {
-            delay = 80;
-        }
-
-        await sleep(delay);
-    }
-}
+        output.textContent += "\n";
 
 
-        terminal.textContent +=
-            "\n> SYSTEM TAKEOVER COMPLETE.\n";
+        await sleep(500);
+
+
+        await typeText(
+            "> WELCOME, COMRADE."
+        );
+
 
         status.textContent =
             "☭ PROLETARIAT MODE ACTIVATED";
 
 
-        await sleep(1000);
+        await sleep(1200);
 
+
+        /*
+         * Pindah ke final screen.
+         */
 
         showFinalScreen();
 
     }
 
 
-    // =========================
-    // PROGRESS BAR
-    // =========================
+    /* =====================================================
+       TYPEWRITER EFFECT
+       ===================================================== */
+
+    async function typeText(text) {
+
+        for (const character of text) {
+
+            output.textContent += character;
+
+
+            /*
+             * Cursor selalu mengikuti teks.
+             */
+
+            output.scrollTop =
+                output.scrollHeight;
+
+
+            /*
+             * Kecepatan berbeda sedikit
+             * supaya terasa seperti terminal.
+             */
+
+            let delay = CHAR_DELAY;
+
+
+            if (character === " ") {
+
+                delay = 8;
+
+            }
+
+
+            if (
+                character === "." ||
+                character === ":"
+            ) {
+
+                delay = 60;
+
+            }
+
+
+            await sleep(delay);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       PROGRESS BAR
+       ===================================================== */
 
     function runProgress() {
 
@@ -159,9 +331,19 @@
 
             let value = 0;
 
+
             const interval = setInterval(() => {
 
-                value += Math.floor(Math.random() * 8) + 3;
+                /*
+                 * Progress random supaya
+                 * tidak terlalu robotik.
+                 */
+
+                value +=
+                    Math.floor(
+                        Math.random() * 7
+                    ) + 2;
+
 
                 if (value >= 100) {
 
@@ -169,14 +351,22 @@
 
                     clearInterval(interval);
 
-                    progress.style.width = "100%";
+                    progress.style.width =
+                        "100%";
 
-                    setTimeout(resolve, 300);
+
+                    setTimeout(
+                        resolve,
+                        400
+                    );
 
                     return;
+
                 }
 
-                progress.style.width = value + "%";
+
+                progress.style.width =
+                    `${value}%`;
 
             }, 100);
 
@@ -185,54 +375,82 @@
     }
 
 
-    // =========================
-    // FINAL SCREEN
-    // =========================
+    /* =====================================================
+       SHOW FINAL SCREEN
+       ===================================================== */
 
     function showFinalScreen() {
 
-        document
-            .querySelector(".proletariat-terminal")
-            .style.display = "none";
+        terminal.style.display = "none";
 
         finalScreen.classList.add("active");
 
     }
 
 
-    // =========================
-    // KEMBALI KE KAPITALISME
-    // =========================
+    /* =====================================================
+       CLOSE / RETURN TO CAPITALISM
+       ===================================================== */
 
     closeButton.addEventListener("click", () => {
 
         overlay.classList.remove("active");
 
-        document
-            .querySelector(".proletariat-terminal")
-            .style.display = "";
 
-        terminal.textContent = "";
+        /*
+         * Reset semuanya supaya bisa
+         * dipanggil lagi nanti.
+         */
+
+        output.textContent = "";
 
         progress.style.width = "0%";
 
         status.textContent = "";
 
+        terminal.style.display = "block";
+
         finalScreen.classList.remove("active");
+
+
+        isRunning = false;
 
     });
 
 
-    // =========================
-    // DELAY HELPER
-    // =========================
+    /* =====================================================
+       ESC = RETURN TO CAPITALISM
+       ===================================================== */
 
-    function sleep(ms) {
+    document.addEventListener("keydown", (event) => {
 
-        return new Promise(resolve =>
-            setTimeout(resolve, ms)
+        if (
+            event.key === "Escape" &&
+            overlay.classList.contains("active")
+        ) {
+
+            closeButton.click();
+
+        }
+
+    });
+
+
+    /* =====================================================
+       SLEEP
+       ===================================================== */
+
+    function sleep(milliseconds) {
+
+        return new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    milliseconds
+                )
         );
 
     }
+
 
 })();
