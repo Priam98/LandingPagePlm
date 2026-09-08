@@ -7,7 +7,7 @@
        CONFIGURATION
        ===================================================== */
 
-    const SECRET = "KOMUNIS";
+    const SECRET = "SOLAR";
 
     const CHAR_DELAY = 25;
 
