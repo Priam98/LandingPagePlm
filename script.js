@@ -65,7 +65,7 @@ logo.addEventListener("click", () => {
     klikLogo++;
     if (klikLogo === 5) {
         alert("Developer mode activated! Kamu menemukan rahasia tersembunyi! Selamat menikmati fitur rahasia ini!");
-        window.location.href = "laporan keuangan.html";
+        window.location.href = "Sales.html";
         klikLogo = 0;
     }});
 
