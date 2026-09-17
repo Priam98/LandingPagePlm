@@ -196,8 +196,6 @@
 
             "> CHECKING PRODUCTION ............... OK",
 
-            "> CHECKING QC ........................ TOO MUCH WORKLOAD",
-
             "> CHECKING EXCEL ..................... UNKNOWN FORMULAS",
 
             "> CHECKING COFFEE .................... CRITICAL",
