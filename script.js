@@ -1,25 +1,93 @@
-const years = document.querySelectorAll('.year-btn');
+document.addEventListener("click", (event) => {
+    const button = event.target.closest(".year-btn");
+    if (!button) return;
 
-years.forEach(button => {
+    const content = button.nextElementSibling;
+    content.classList.toggle("active");
+    button.textContent = `${content.classList.contains("active") ? "▼" : "▶"} ${button.dataset.year}`;
+});
 
-    button.addEventListener('click', () => {
+function createPortalLink(link) {
+    const anchor = document.createElement("a");
+    anchor.href = link.href;
+    anchor.textContent = link.label;
 
-        const content =
-            button.nextElementSibling;
+    if (link.targetBlank) {
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+    }
+    if (link.className) anchor.className = link.className;
+    if (link.action === "openDrawing") {
+        anchor.addEventListener("click", (event) => {
+            event.preventDefault();
+            bukaDrawing();
+        });
+    }
+    return anchor;
+}
 
-        content.classList.toggle('active');
+function renderPortalLinks(cards) {
+    const container = document.getElementById("portal-links");
+    container.replaceChildren();
 
-        if(content.classList.contains('active')){
-            button.innerHTML =
-            button.innerHTML.replace('▶','▼');
-        }else{
-            button.innerHTML =
-            button.innerHTML.replace('▼','▶');
+    cards.forEach((cardData) => {
+        const card = document.createElement("section");
+        card.className = "card";
+        card.id = cardData.id;
+
+        const heading = document.createElement("h2");
+        const icon = document.createElement("span");
+        icon.className = "card-icon";
+        icon.textContent = cardData.icon;
+        heading.append(icon, cardData.title);
+        card.appendChild(heading);
+
+        const content = cardData.scrollable ? document.createElement("div") : card;
+        if (cardData.scrollable) {
+            content.className = "card-scroll";
+            card.appendChild(content);
         }
 
+        cardData.groups.forEach((group) => {
+            if (!group.year) {
+                group.links.forEach((link) => content.appendChild(createPortalLink(link)));
+                return;
+            }
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "year-btn";
+            button.dataset.year = group.year;
+            button.textContent = `▶ ${group.year}`;
+
+            const yearContent = document.createElement("div");
+            yearContent.className = "year-content";
+            group.links.forEach((link) => yearContent.appendChild(createPortalLink(link)));
+            content.append(button, yearContent);
+        });
+
+        container.appendChild(card);
     });
 
-});
+    tombolKabur = document.querySelector(".kabur-source");
+}
+
+async function loadPortalLinks() {
+    const container = document.getElementById("portal-links");
+    try {
+        const response = await fetch("links.json");
+        if (!response.ok) throw new Error(`Gagal memuat links.json: ${response.status}`);
+
+        const data = await response.json();
+        if (!Array.isArray(data.cards)) throw new TypeError("Format links.json tidak valid.");
+        renderPortalLinks(data.cards);
+    } catch (error) {
+        console.error(error);
+        container.textContent = "Tautan portal gagal dimuat. Silakan muat ulang halaman.";
+    }
+}
+
+loadPortalLinks();
 
 
 const quotes = [
@@ -40,7 +108,7 @@ const quotes = [
 document.getElementById('quotes').textContent =
     "💡 " + quotes[Math.floor(Math.random() * quotes.length)]
     ;
-    
+
 
 const logo = document.getElementById("logo");
 let klikLogo = 0;
@@ -170,7 +238,7 @@ document.addEventListener("visibilitychange", () => {
 // TOMBOL NO SURAT JALAN - MODE KABUR
 // =========================================================
 
-const tombolKabur = document.querySelector('.kabur-source');
+let tombolKabur = null;
 
 let tombolKaburClone = null;
 let sudahKabur = false;

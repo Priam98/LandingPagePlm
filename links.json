@@ -1,0 +1,831 @@
+{
+  "cards": [
+    {
+      "id": "operasional",
+      "title": "Operasional",
+      "icon": "📊",
+      "scrollable": true,
+      "groups": [
+        {
+          "links": [
+            {
+              "label": "Memo Pengiriman",
+              "href": "https://docs.google.com/spreadsheets/d/1KS8bg-QVUYAn0CtYT_rPS1IIutxYRPM1fduXpkN1QUs/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Memo Produksi",
+              "href": "https://docs.google.com/spreadsheets/d/1QB381OarG2fA_WblxB69lO51-Jlh6a9SM2MgU28u_ek/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "No Surat Jalan",
+              "href": "https://docs.google.com/spreadsheets/d/1-YCOXkAbRH38hiwIgKchMk6ClBEVOx1yS-hnGvpE7-k/edit?gid=1463546306#gid=1463546306",
+              "targetBlank": true,
+              "className": "kabur-source",
+              "action": null
+            },
+            {
+              "label": "Production Control System",
+              "href": "https://docs.google.com/spreadsheets/d/15myWjeVaQQ_uvQsLvT99hSNHuVBPm_pbiIybZCpEKlQ/edit?gid=1881273162#gid=1881273162",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "MRF",
+              "href": "https://docs.google.com/spreadsheets/d/1cpIs8umtpbjpwRdA1U-9n1l5hDZjXZqq7WvbCI9UdnI/edit?gid=1483102991#gid=1483102991",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Data Material Masuk",
+              "href": "https://docs.google.com/spreadsheets/d/16c-IStlcuoQFkqNNPuICijrhdafxQxie9Is8iHYoVqM/edit?gid=93681309#gid=93681309",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Data Gudang",
+              "href": "https://docs.google.com/spreadsheets/d/1PoRhHdT_34LjAi5Wm9w8mfPmktxUNC7fZwmP2RRkRqc/edit?gid=1927320199#gid=1927320199",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Laporan Hasil Produksi Harian",
+              "href": "https://docs.google.com/spreadsheets/d/17lfwXS8x4hhEAnKCbcrw6M9mqDPaceWDfup9CpugqNY/edit?gid=292009842#gid=292009842",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Laporan Produktifitas Mingguan",
+              "href": "https://docs.google.com/spreadsheets/d/1m036m5V3KIbVU6l2AqkcY3f9Jtkp9O2pu9LcS2qIAYI/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "produksi",
+      "title": "Produksi",
+      "icon": "🏗️",
+      "scrollable": true,
+      "groups": [
+        {
+          "year": "2026",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "https://docs.google.com/spreadsheets/d/1fijb-aZ-cSP_hpbDZB-kXWm-cZvJmLg684MGbfHOqjM/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "https://docs.google.com/spreadsheets/d/1R36Oh762cU63DdHwwf8dh5XDI6W-kLyp_lgFkRsPXPM/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "https://docs.google.com/spreadsheets/d/1Bu-XQ3BBS7WFB7_6BgTpPL0gUgIEOyk5KvoDhWDeACQ/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "https://docs.google.com/spreadsheets/d/1D6nPK_FiVmrO6bpn9KMHOsTtbBYnUnSSUZDxvaDx3Cc/edit?gid=391063482#gid=391063482",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/1gCM9uWZQJ5_Xv4k5ib5vckE3e4mEu_caQDK3DHVqxMQ/edit?gid=978382831#gid=978382831",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/1ed4o6Ze8eHedbA_ZDyK1K8xDVy6tfnYBbDzJB7I9d3k/edit?gid=391063482#gid=391063482",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/1UNPP2ZMtoJNSawDsk7DiaQCF1SKd8wXQ9heOVHq2N9c/edit?gid=978382831#gid=978382831",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/1121zEYmYnH6SG9GuwwvjZd7n7Iv-CsWQcgUJ2Essqnw/edit?gid=391063482#gid=391063482",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/12BkSJ36ILkwXpTeTiFgr7V8NtT5_MsOEMBVcXqGFPW4/edit?gid=391063482#gid=391063482",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "https://docs.google.com/spreadsheets/d/1otzjHIP0T2aSBE88ZjtuxUV06gUHyCKuRnUwFd-Bh_8/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "https://docs.google.com/spreadsheets/d/14elbAqnYDejTS8Ba0yGPeEHGidYULsDVvNkQhlmu1aE/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "https://docs.google.com/spreadsheets/d/1yE7_6IySVR88XZpp01DLEsh97Z82ki8KsVecTVnMuOQ/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "https://docs.google.com/spreadsheets/d/1GLSWJaBnHtu8mNBgslGBNssFQoWxUBb1KUWHCxBZFH4/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/10bCzeTrqHnEPKQUw0fUNYg19mGdkHfsMclroCZ_Ntzg/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/1pzhqROKP4ZOCAyJuhDNQyMV0EgZMMZd659uBGBGDrUM/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/1-jj7t2HqFNFHjziiYWZ9a-I4_qgqgsC-5GXIb6_PVd4/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/1znzMRKQiuByB_P8dF0HVsfiVOjugJN_HN4f2vpfOQTU/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/1EBypzXYJ6lWzMEgZWccQKbG8fyg2s4pHncrL703lVQY/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "https://docs.google.com/spreadsheets/d/1m0WVVhaqJYtww_4_LbYrfxjZJJ9YkYTH5w9doZvIXwU/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "https://docs.google.com/spreadsheets/d/1z62RsQ1ZkcS71AUEKdMHUfnW_RdOkWL6hF_iNXb_PjA/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "https://docs.google.com/spreadsheets/d/1a-M25xhuslmonYCQutD4289vfRLoCN0_06ehAj2UmOU/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        },
+        {
+          "year": "2024",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "https://docs.google.com/spreadsheets/d/1hBJ9Xb1LRAWA1Zn9iul5IsymWKpmmugNXl4NRJNqTqA/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "https://docs.google.com/spreadsheets/d/1CaENEmwph0sC1lZJ1INSc1iD5bp5R1jgTxvB3Q979Nw/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "https://docs.google.com/spreadsheets/d/1uGdq0yi1pSdnZaDmTRhN-pl4tZAFuZLHOAYEr7wTpe8/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "https://docs.google.com/spreadsheets/d/1X3CMvpsqW2gIl5nrkoxdQw2j17p2jVyKBJp6UsFDT4s/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/1-eadtkox6jjsq5a6SkXqdQ3yN_7CUVIFRE5NGH3GUkA/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/1zzYyIwCwG3xkzoIV7rtIpKMx0tZ_71wt0iuALeExqIo/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/1n1i5b2GtWEVgZ60uTyyxCyyDc87aUt-3fvwlrWvj5eI/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/141Cb9IpC07sNnCW5pIc9_CAk9ZCgzcVHv9pE961z7U8/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/1tkWIzpM5AWCL0OYfLn_AYH7UBvIyLBzET5zKrk9gp6o/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "https://docs.google.com/spreadsheets/d/1tufuwyLrmn_Z4nHHeZ3xoC3OE1V5wqIZJ_mWWxCwc_M/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "https://docs.google.com/spreadsheets/d/1T-YsGg8ZpXXPFqQkxnh-iphamttvO7GVfzWNwCOy8VQ/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "https://docs.google.com/spreadsheets/d/1AHlp90TF2lfvVaB1m0ZsWt9d17VPI9TchfnvsPBZSlA/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outstanding",
+      "title": "Outstanding",
+      "icon": "📌",
+      "scrollable": false,
+      "groups": [
+        {
+          "year": "2026",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "https://docs.google.com/spreadsheets/d/1iRNlbeTQN0sSvLOjiUL8VMKO2cJPni4a/edit?gid=1896399864#gid=1896399864",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "https://docs.google.com/spreadsheets/d/1Z_MSkeDJSQTL3zSizBBKtI7kpGddXQ5k/edit?gid=603185909#gid=603185909",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "https://docs.google.com/spreadsheets/d/1lJJNpLmOjA1DIScbeCS5ub_TLg3DeCw2/edit?gid=1578858607#gid=1578858607",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "https://docs.google.com/spreadsheets/d/1_D8WIRPW40-4FFSRejAR7Oa7bk_Tq7X-0Cl4zDREoJM/edit?gid=418737437#gid=418737437",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/19FSqcdXQbM6vm0zA--As2r-VSl80zNh9Qqqeh06P4FA/edit?gid=1968999091#gid=1968999091",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/1VBS3BrcNA068E_Rbp9qNytvjDnAOYUJdfABJ-qnEpC0/edit?gid=841035639#gid=841035639",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/1rWOT9uYJ7om07XzcQ2X3jcQGw-SI4Wqezyj2DuZryFw/edit?gid=170965846#gid=170965846",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/1qnqW03a5kxtsaPBRFnrgpCzW3SvrwWbJOTMSzJ1XUj0/edit?gid=1184448399#gid=1184448399",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/19YS5o9khJcB7JRIAGccgbJs3bT97v8wXXj0F7Ang5n8/edit?gid=0#gid=0",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "https://docs.google.com/spreadsheets/d/1aZ0GhTPbrbwZbVBKiLGf44OKuBrYMCCH/edit?gid=1798697519#gid=1798697519",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "https://docs.google.com/spreadsheets/d/1leZ9l7Ew8-FVro2uiRsLXaf0ECgrONgX/edit?gid=1909591454#gid=1909591454",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "https://docs.google.com/spreadsheets/d/1hOuyBHutfWcqVw9STj2HoEmu6GFOfHqB/edit?gid=868414420#gid=868414420",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "https://docs.google.com/spreadsheets/d/1S89dmsw-U1YFzV6a61FyitN_XI9Y3ONX/edit?usp=drive_link&ouid=109367188134401338579&rtpof=true&sd=true",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/13MKEQ6QQ_Z8svTCqlOnDbV7ytnGqhbFK/edit?gid=353089359#gid=353089359",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/12l6-rlWBSLJZGvIy9jtVefz1DPctQR6W/edit?gid=2043706982#gid=2043706982",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/11bX0OYiIO9ndC5hojptw_3VgMCerSX7k/edit?gid=1232824175#gid=1232824175",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/1XPVYIV-3ZdUqRlgVCMnzc2QGOFnagDu6/edit?gid=1608040613#gid=1608040613",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/1_ESAQfsWB-wCUQHL4vcMIQca56IQkvvO/edit?gid=1108876150#gid=1108876150",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "https://docs.google.com/spreadsheets/d/1nIn860aYSkKZG0_mDM8nln6ISjmdPJuw/edit?gid=2062873477#gid=2062873477",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "https://docs.google.com/spreadsheets/d/1TTgOl2w4w3liVKbJoCcE_9iw6JHrNWBM/edit?gid=675473040#gid=675473040",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "https://docs.google.com/spreadsheets/d/1xbqzBs5JreM8L4gsZxfPCPj0XSodQszh/edit?gid=552431091#gid=552431091",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        },
+        {
+          "year": "2024",
+          "links": [
+            {
+              "label": "Januari",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Februari",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Maret",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "April",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Mei",
+              "href": "https://docs.google.com/spreadsheets/d/1JVLEANqBf6jeRaaw8W8KWSoWyxkly_yw/edit?gid=1774500212#gid=1774500212",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juni",
+              "href": "https://docs.google.com/spreadsheets/d/14sk3gp0TvLJHjjJMhR0MbhyaPl45H7xs/edit?gid=833236732#gid=833236732",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Juli",
+              "href": "https://docs.google.com/spreadsheets/d/1Mgo28kpJjbeyfnr1hz3OKK7eNt5_tZY4/edit?gid=789955808#gid=789955808",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Agustus",
+              "href": "https://docs.google.com/spreadsheets/d/1ICiqFcCrWLiTEek-vWjQHVwBGI_W-Syu/edit?gid=1858740060#gid=1858740060",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "September",
+              "href": "https://docs.google.com/spreadsheets/d/1OgdMa8lDJgvnTpNwg90rHs05YJDxecWS/edit?gid=252527368#gid=252527368",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Oktober",
+              "href": "https://docs.google.com/spreadsheets/d/1SDWRVii-_LUk2ZQEfusYTL1fAos3TMdd/edit?gid=475383105#gid=475383105",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "https://docs.google.com/spreadsheets/d/1Kz7b7kvPRp4KvhH9e9WSyGKlp6HS_-GX/edit?gid=2081883031#gid=2081883031",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "November",
+              "href": "https://docs.google.com/spreadsheets/d/1Kz7b7kvPRp4KvhH9e9WSyGKlp6HS_-GX/edit?gid=1219191235#gid=1219191235",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Desember",
+              "href": "https://docs.google.com/spreadsheets/d/1y8lu8-w576_xF3OAvSslK88Q5CTqxO2P/edit?gid=761770915#gid=761770915",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pengiriman",
+      "title": "Pengiriman",
+      "icon": "🚚",
+      "scrollable": false,
+      "groups": [
+        {
+          "links": [
+            {
+              "label": "2021",
+              "href": "https://docs.google.com/spreadsheets/d/1PckWB18RtDmVft9wcHdR32lNtlKohdp2JRhiUTjYcLg/edit?gid=604033766#gid=604033766",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "2022",
+              "href": "https://docs.google.com/spreadsheets/d/1Uhpx3BqLWzWnfHTv-zgsjRLyTlTtpFC8/edit?gid=189131531#gid=189131531",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "2023",
+              "href": "https://docs.google.com/spreadsheets/d/1Y0w2SI0UxwwH9T0wMayLBhPTPfq6zCFZ/edit?gid=1613013350#gid=1613013350",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "2024",
+              "href": "https://docs.google.com/spreadsheets/d/12Aqkr0i0csRFy1_4MRHH9ijnqtNehlrX/edit?gid=2013183252#gid=2013183252",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "2025",
+              "href": "https://docs.google.com/spreadsheets/d/1xLCAXWx4jlfVV3eNis2tubZpCe0ROHhU/edit?gid=486014840#gid=486014840",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "2026",
+              "href": "https://docs.google.com/spreadsheets/d/16ehGzrYJuXb0TuiA3YipGhXn2ggVqFGvYXFehxBU4sY/edit?gid=2102397135#gid=2102397135",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "form",
+      "title": "Form",
+      "icon": "📝",
+      "scrollable": false,
+      "groups": [
+        {
+          "links": [
+            {
+              "label": "Checklist Alat",
+              "href": "https://linktr.ee/Ceklist",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Checklist Quality",
+              "href": "develop.html",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Raw Material Masuk",
+              "href": "https://forms.gle/H3KicFDWrLqxbRsn8",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Raw Material Keluar",
+              "href": "https://docs.google.com/forms/d/e/1FAIpQLSekjv3LkhNElFgt5h9wWPB4MBgl7ihzpd7Zsri1DYchtxiOBQ/viewform?usp=send_form",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Barang Gudang Masuk",
+              "href": "https://forms.gle/B7jLyQqPDPU5ztqG6",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Barang Gudang Keluar",
+              "href": "https://forms.gle/W2zFL7pZdSWW23CVA",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin",
+      "title": "Admin",
+      "icon": "📒",
+      "scrollable": true,
+      "groups": [
+        {
+          "links": [
+            {
+              "label": "Monthly Report",
+              "href": "https://drive.google.com/drive/folders/1awIa6SqEpjdmqfy8NPSbWGMERsTfoThp?usp=drive_link",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Laporan Keuangan",
+              "href": "laporan keuangan.html",
+              "targetBlank": false,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Shop Drawing",
+              "href": "javascript:void(0)",
+              "targetBlank": false,
+              "className": null,
+              "action": "openDrawing"
+            },
+            {
+              "label": "Sertifikat Kalibrasi",
+              "href": "https://drive.google.com/drive/folders/1zPrd4DtK7M9hj18nHe51hAEUZc0QRT1i?usp=drive_link",
+              "targetBlank": false,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Megacon ERP",
+              "href": "https://megacon.digitalasiasolusindo.com/app/home",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Aset",
+              "href": "https://docs.google.com/spreadsheets/d/1IUxTC6WOuzxCxKFlPCBbDj7THet-BDPs/edit?gid=849222704#gid=849222704",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "OKR",
+              "href": "https://docs.google.com/spreadsheets/d/10g2YeeKqvTKOow9TikLMnjcSLw2C5XbVIOMZv38fAYs/edit?gid=1223146110#gid=1223146110",
+              "targetBlank": true,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hiburan",
+      "title": "Hiburan",
+      "icon": "🎮",
+      "scrollable": false,
+      "groups": [
+        {
+          "links": [
+            {
+              "label": "Catur",
+              "href": "Hiburan/catur.html",
+              "targetBlank": false,
+              "className": null,
+              "action": null
+            },
+            {
+              "label": "Blockblast",
+              "href": "Hiburan/blockblast.html",
+              "targetBlank": false,
+              "className": null,
+              "action": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
