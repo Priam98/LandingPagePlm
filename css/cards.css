@@ -158,12 +158,19 @@
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.18);
 
+        pointer-events: auto !important;
+    user-select: none;
+
+    left: 0;
+    top: 0;
+
     transition:
-        left 0.08s ease-out,
-        top 0.08s ease-out,
+        left 0.12s ease-out,
+        top 0.12s ease-out,
         background 0.18s ease,
         box-shadow 0.18s ease;
 }
+
 
 .kabur-flyer::after {
     content: "→";
