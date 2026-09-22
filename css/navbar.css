@@ -179,3 +179,31 @@ body.dark .top-navbar {
 .nav-menu-btn.is-open span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
 }
+
+.admin-login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background: #1e293b;
+    color: #ffffff;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.admin-login-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
