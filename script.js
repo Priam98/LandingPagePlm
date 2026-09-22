@@ -106,7 +106,7 @@ function mapSupabaseCards(cards) {
 }
 
 async function loadPortalFromSupabase() {
-    if (!window.supabaseClient) {
+    if (typeof supabaseClient === "undefined") {
         throw new Error("Supabase client belum dimuat.");
     }
 
