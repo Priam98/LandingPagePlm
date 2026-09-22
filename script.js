@@ -182,16 +182,16 @@ const pesanKabur = [
     "Nah loh....."
 ];
 
-const JARAK_TRIGGER = 150;
-const KECEPATAN_KABUR = 3;
-const MARGIN_VIEWPORT = 10;
+const JARAK_TRIGGER = 170;
+const JARAK_AMAN = 230;
+const MARGIN_VIEWPORT = 15;
 
 
-// ---------------------------------------------------------
-// Buat clone tombol dan pindahkan ke <body>
-// ---------------------------------------------------------
+// =========================================================
+// Buat clone
+// =========================================================
 
-function aktifkanTombolKabur() {
+function aktifkanTombolKabur(e) {
 
     if (sudahKabur || !tombolKabur) {
         return;
@@ -199,35 +199,49 @@ function aktifkanTombolKabur() {
 
     const rect = tombolKabur.getBoundingClientRect();
 
-    // Clone anchor asli
     tombolKaburClone = tombolKabur.cloneNode(true);
 
-    // Class khusus untuk styling clone
     tombolKaburClone.classList.remove('kabur-source');
     tombolKaburClone.classList.add('kabur-flyer');
 
-    // Clone dianggap sebagai elemen baru
     tombolKaburClone.removeAttribute('id');
 
-    // Pertahankan posisi visual awal
+    /*
+     * Pastikan ukuran clone sama dengan tombol asli.
+     */
+    tombolKaburClone.style.width = `${rect.width}px`;
+    tombolKaburClone.style.height = `${rect.height}px`;
+
+    /*
+     * Masukkan ke body.
+     */
+    document.body.appendChild(tombolKaburClone);
+
+    /*
+     * Simpan posisi awal.
+     */
     tombolKaburClone.style.left = `${rect.left}px`;
     tombolKaburClone.style.top = `${rect.top}px`;
 
-    // Masukkan langsung ke body
-    document.body.appendChild(tombolKaburClone);
-
-    // Anchor asli tetap mengambil tempat
+    /*
+     * Sembunyikan tombol asli TANPA mengubah layout.
+     */
     tombolKabur.classList.add('is-flying');
 
     sudahKabur = true;
 
     ubahPesanKabur();
+
+    /*
+     * Langsung kabur dari cursor.
+     */
+    kaburkanDariCursor(e);
 }
 
 
-// ---------------------------------------------------------
-// Ganti teks clone secara random
-// ---------------------------------------------------------
+// =========================================================
+// Random text
+// =========================================================
 
 function ubahPesanKabur() {
 
@@ -239,15 +253,16 @@ function ubahPesanKabur() {
         Math.random() * pesanKabur.length
     );
 
-    tombolKaburClone.textContent = pesanKabur[index];
+    tombolKaburClone.textContent =
+        pesanKabur[index];
 }
 
 
-// ---------------------------------------------------------
-// Gerakkan tombol menjauhi cursor
-// ---------------------------------------------------------
+// =========================================================
+// Cari posisi kabur
+// =========================================================
 
-function gerakkanTombolKabur(e) {
+function kaburkanDariCursor(e) {
 
     if (!tombolKaburClone) {
         return;
@@ -262,88 +277,166 @@ function gerakkanTombolKabur(e) {
     const centerY =
         rect.top + rect.height / 2;
 
-    const dx =
-        e.clientX - centerX;
+    let dx =
+        centerX - e.clientX;
 
-    const dy =
-        e.clientY - centerY;
+    let dy =
+        centerY - e.clientY;
 
     const jarak =
         Math.hypot(dx, dy);
 
     /*
-     * Kalau cursor sudah terlalu dekat dengan clone,
-     * dorong clone menjauh.
+     * Kalau cursor tepat di tengah,
+     * pilih arah random.
      */
-    if (jarak < JARAK_TRIGGER) {
+    if (jarak < 1) {
 
-        /*
-         * Kalau cursor tepat di tengah tombol,
-         * dx/dy bisa mendekati 0.
-         *
-         * Hindari tombol tidak bergerak sama sekali.
-         */
-        let arahX = dx;
-        let arahY = dy;
+        dx = Math.random() - 0.5;
+        dy = Math.random() - 0.5;
 
-        if (jarak < 1) {
+    } else {
 
-            arahX =
-                Math.random() > 0.5
-                    ? 1
-                    : -1;
+        dx /= jarak;
+        dy /= jarak;
 
-            arahY =
-                Math.random() > 0.5
-                    ? 1
-                    : -1;
-        }
-
-        let x =
-            rect.left -
-            arahX * KECEPATAN_KABUR;
-
-        let y =
-            rect.top -
-            arahY * KECEPATAN_KABUR;
-
-        /*
-         * Batas viewport.
-         *
-         * Tombol tidak boleh keluar layar.
-         */
-        const maxX =
-            window.innerWidth -
-            rect.width -
-            MARGIN_VIEWPORT;
-
-        const maxY =
-            window.innerHeight -
-            rect.height -
-            MARGIN_VIEWPORT;
-
-        x = Math.max(
-            MARGIN_VIEWPORT,
-            Math.min(x, maxX)
-        );
-
-        y = Math.max(
-            MARGIN_VIEWPORT,
-            Math.min(y, maxY)
-        );
-
-        tombolKaburClone.style.left =
-            `${x}px`;
-
-        tombolKaburClone.style.top =
-            `${y}px`;
     }
+
+    /*
+     * Jarak kabur.
+     */
+    const escapeDistance = 220;
+
+    let x =
+        rect.left +
+        dx * escapeDistance;
+
+    let y =
+        rect.top +
+        dy * escapeDistance;
+
+
+    // =====================================================
+    // Batas viewport
+    // =====================================================
+
+    const maxX =
+        window.innerWidth -
+        rect.width -
+        MARGIN_VIEWPORT;
+
+    const maxY =
+        window.innerHeight -
+        rect.height -
+        MARGIN_VIEWPORT;
+
+
+    /*
+     * Kalau arah kabur membawa tombol ke luar layar,
+     * coba cari posisi random yang aman.
+     */
+    if (
+        x < MARGIN_VIEWPORT ||
+        x > maxX ||
+        y < MARGIN_VIEWPORT ||
+        y > maxY
+    ) {
+
+        const kandidat = cariPosisiAman(
+            rect,
+            e.clientX,
+            e.clientY
+        );
+
+        x = kandidat.x;
+        y = kandidat.y;
+    }
+
+
+    tombolKaburClone.style.left =
+        `${x}px`;
+
+    tombolKaburClone.style.top =
+        `${y}px`;
+
+    ubahPesanKabur();
 }
 
 
-// ---------------------------------------------------------
-// Mouse movement
-// ---------------------------------------------------------
+// =========================================================
+// Cari posisi random yang jauh dari cursor
+// =========================================================
+
+function cariPosisiAman(rect, mouseX, mouseY) {
+
+    const maxX =
+        window.innerWidth -
+        rect.width -
+        MARGIN_VIEWPORT;
+
+    const maxY =
+        window.innerHeight -
+        rect.height -
+        MARGIN_VIEWPORT;
+
+    let kandidatX = rect.left;
+    let kandidatY = rect.top;
+
+    let jarakTerbaik = 0;
+
+    /*
+     * Coba 30 posisi random.
+     * Ambil yang paling jauh dari cursor.
+     */
+    for (let i = 0; i < 30; i++) {
+
+        const x =
+            MARGIN_VIEWPORT +
+            Math.random() *
+            Math.max(
+                1,
+                maxX - MARGIN_VIEWPORT
+            );
+
+        const y =
+            MARGIN_VIEWPORT +
+            Math.random() *
+            Math.max(
+                1,
+                maxY - MARGIN_VIEWPORT
+            );
+
+        const centerX =
+            x + rect.width / 2;
+
+        const centerY =
+            y + rect.height / 2;
+
+        const jarak =
+            Math.hypot(
+                centerX - mouseX,
+                centerY - mouseY
+            );
+
+        if (jarak > jarakTerbaik) {
+
+            jarakTerbaik = jarak;
+
+            kandidatX = x;
+            kandidatY = y;
+        }
+    }
+
+    return {
+        x: kandidatX,
+        y: kandidatY
+    };
+}
+
+
+// =========================================================
+// Pantau cursor
+// =========================================================
 
 document.addEventListener(
     'mousemove',
@@ -353,10 +446,11 @@ document.addEventListener(
             return;
         }
 
-        /*
-         * Sebelum kabur:
-         * cek jarak cursor ke tombol asli.
-         */
+
+        // -------------------------------------------------
+        // Belum kabur
+        // -------------------------------------------------
+
         if (!sudahKabur) {
 
             const rect =
@@ -368,26 +462,55 @@ document.addEventListener(
             const centerY =
                 rect.top + rect.height / 2;
 
-            const dx =
-                e.clientX - centerX;
-
-            const dy =
-                e.clientY - centerY;
-
             const jarak =
-                Math.hypot(dx, dy);
+                Math.hypot(
+                    e.clientX - centerX,
+                    e.clientY - centerY
+                );
 
             if (jarak < JARAK_TRIGGER) {
-                aktifkanTombolKabur();
+
+                aktifkanTombolKabur(e);
+
             }
 
             return;
         }
 
+
+        // -------------------------------------------------
+        // Sudah kabur
+        // -------------------------------------------------
+
+        if (!tombolKaburClone) {
+            return;
+        }
+
+        const rect =
+            tombolKaburClone.getBoundingClientRect();
+
+        const centerX =
+            rect.left + rect.width / 2;
+
+        const centerY =
+            rect.top + rect.height / 2;
+
+        const jarak =
+            Math.hypot(
+                e.clientX - centerX,
+                e.clientY - centerY
+            );
+
+
         /*
-         * Setelah kabur:
-         * gerakkan clone.
+         * Cursor mendekat lagi?
+         * Kabur lagi.
          */
-        gerakkanTombolKabur(e);
+        if (jarak < JARAK_TRIGGER) {
+
+            kaburkanDariCursor(e);
+
+        }
+
     }
 );
