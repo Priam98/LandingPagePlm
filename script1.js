@@ -21,10 +21,12 @@ years.forEach(button => {
 
 });
 
-
 const tombolKabur = document.querySelector('.kabur');
 
+let sudahKabur = false;
+
 document.addEventListener('mousemove', (e) => {
+
     const rect = tombolKabur.getBoundingClientRect();
 
     const centerX = rect.left + rect.width / 2;
@@ -33,7 +35,7 @@ document.addEventListener('mousemove', (e) => {
     const dx = e.clientX - centerX;
     const dy = e.clientY - centerY;
 
-    const jarak = Math.sqrt(dx * dx + dy * dy);
+    const jarak = Math.hypot(dx, dy);
 
     const pesan = [
         "Hayoo ngapain",
@@ -44,18 +46,33 @@ document.addEventListener('mousemove', (e) => {
 
     if (jarak < 150) {
 
-        tombolKabur.style.position = 'fixed';
-        tombolKabur.style.zIndex = '99999';
+        // Sekali saja: pindahkan tombol keluar dari card
+        if (!sudahKabur) {
 
-        let x = rect.left - dx * 3;
-        let y = rect.top - dy * 3;
+            document.body.appendChild(tombolKabur);
 
-        // Biar tidak kabur keluar layar
-        const maxX = window.innerWidth - rect.width;
-        const maxY = window.innerHeight - rect.height;
+            tombolKabur.style.position = 'fixed';
+            tombolKabur.style.zIndex = '999999';
 
-        x = Math.max(10, Math.min(x, maxX - 10));
-        y = Math.max(10, Math.min(y, maxY - 10));
+            sudahKabur = true;
+        }
+
+        const speed = 3;
+
+        let x = rect.left - dx * speed;
+        let y = rect.top - dy * speed;
+
+        // Batas viewport
+        const margin = 10;
+
+        const maxX =
+            window.innerWidth - rect.width - margin;
+
+        const maxY =
+            window.innerHeight - rect.height - margin;
+
+        x = Math.max(margin, Math.min(x, maxX));
+        y = Math.max(margin, Math.min(y, maxY));
 
         tombolKabur.style.left = `${x}px`;
         tombolKabur.style.top = `${y}px`;
@@ -66,7 +83,6 @@ document.addEventListener('mousemove', (e) => {
             pesan[Math.floor(Math.random() * pesan.length)];
     }
 });
-
                           
 const quotes = [
     "Bug yang konsisten itu bukan bug, tapi fitur",
