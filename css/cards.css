@@ -98,8 +98,97 @@
     animation: reveal 0.22s ease;
 }
 
-.kabur {
-    will-change: transform;
+/* =========================================================
+   NO SURAT JALAN - TOMBOL KABUR
+   Anchor asli tetap berada di dalam card sebagai placeholder.
+   Yang bergerak adalah clone yang dipindahkan ke <body>.
+   ========================================================= */
+
+.kabur-source {
+    position: relative;
+}
+
+/*
+ * Clone yang sudah keluar dari card.
+ * Karena sudah menjadi child <body>, dia tidak terpengaruh
+ * oleh overflow:auto pada .card-scroll.
+ */
+.kabur-flyer {
+    position: fixed !important;
+
+    /* Jangan biarkan selector global mengubah ukurannya */
+    width: auto !important;
+    min-width: 180px;
+    min-height: 44px !important;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin: 0 !important;
+    padding: 10px 12px !important;
+
+    box-sizing: border-box;
+
+    color: var(--text) !important;
+    background: var(--surface) !important;
+
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 14px;
+
+    font-weight: 650;
+    text-align: left;
+    text-decoration: none;
+
+    /*
+     * Ini yang membuat dia benar-benar berada di atas
+     * card lain.
+     */
+    z-index: 2147483647 !important;
+
+    /*
+     * Posisi dikendalikan JS menggunakan left/top.
+     * Jangan gunakan transform di sini.
+     */
+    transform: none !important;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+
+    transition:
+        left 0.08s ease-out,
+        top 0.08s ease-out,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.kabur-flyer::after {
+    content: "→";
+    color: var(--accent);
+    flex: 0 0 auto;
+}
+
+.kabur-flyer:hover {
+    background: rgba(56, 189, 248, 0.1) !important;
+    border-color: var(--border-strong) !important;
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.24);
+}
+
+/*
+ * Saat tombol asli sudah punya clone,
+ * elemen asli tetap mengambil tempat di layout,
+ * tetapi tidak terlihat.
+ *
+ * visibility:hidden mempertahankan ukuran/posisi
+ * sehingga card tidak mengalami reflow.
+ */
+.kabur-source.is-flying {
+    visibility: hidden;
 }
 
 @keyframes reveal {
