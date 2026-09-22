@@ -1,27 +1,27 @@
-@media (max-width: 1180px) {
+/* ============================================================
+   Portal v3.0 — Responsive
+   ============================================================ */
+
+@media (max-width: 1200px) {
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .nav-links a {
-        padding-inline: 9px;
-        font-size: 0.88rem;
-    }
-
     .search-box {
-        width: min(300px, 30vw);
+        width: 180px;
     }
 }
 
 @media (max-width: 920px) {
     :root {
-        --navbar-height: 66px;
+        --navbar-height: 48px;
     }
 
     .container,
     .nav-shell,
-    footer {
-        width: min(100% - 28px, 760px);
+    .portal-header-inner,
+    .footer-inner {
+        width: min(100% - 20px, 760px);
     }
 
     .nav-shell {
@@ -34,20 +34,21 @@
 
     .nav-panel {
         position: absolute;
-        left: 14px;
-        right: 14px;
-        top: calc(var(--navbar-height) + 8px);
+        left: 10px;
+        right: 10px;
+        top: calc(var(--navbar-height) + 4px);
         display: grid;
-        gap: 14px;
-        padding: 16px;
+        gap: 10px;
+        padding: 12px;
         border: 1px solid var(--border);
-        border-radius: 18px;
-        background: var(--surface);
-        box-shadow: var(--shadow);
-        transform: translateY(-8px);
+        background: var(--bg-panel);
+        transform: translateY(-6px);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
+        transition: opacity 0.15s ease, transform 0.15s ease;
+        max-height: calc(100vh - var(--navbar-height) - 20px);
+        overflow-y: auto;
+        z-index: 110;
     }
 
     .nav-panel.is-open {
@@ -58,94 +59,117 @@
 
     .nav-links {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        height: auto;
+        overflow: visible;
     }
 
     .nav-links a {
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        background: var(--card);
+        border: 1px solid var(--border-soft);
+        border-bottom: 1px solid var(--border-soft);
+        padding: 10px 12px;
+        background: var(--surface);
+        color: var(--text);
+    }
+
+    .nav-links a:hover {
+        border-bottom-color: var(--border-soft);
+        background: var(--accent-soft);
+        color: var(--accent);
     }
 
     .nav-actions {
+        flex-direction: column;
         align-items: stretch;
+        gap: 8px;
     }
 
     .search-box {
         width: 100%;
-        flex: 1;
+    }
+
+    .admin-login-btn {
+        justify-content: center;
+    }
+
+    .theme-toggle {
+        align-self: flex-end;
     }
 
     .dashboard-layout {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
     .sidebar {
         position: static;
     }
 
-    #status-list {
-        max-height: 360px;
+    .status-list {
+        max-height: 220px;
+    }
+
+    .portal-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 0;
+    }
+
+    .portal-header-right {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .portal-header-copy h1 {
+        font-size: 1.15rem;
     }
 }
 
 @media (max-width: 640px) {
     .container,
     .nav-shell,
-    footer {
-        width: min(100% - 22px, 480px);
+    .portal-header-inner,
+    .footer-inner {
+        width: min(100% - 16px, 480px);
     }
 
-    .nav-brand span {
+    .nav-brand-sub {
         display: none;
     }
 
-    .nav-links,
-    .grid {
+    .nav-links {
         grid-template-columns: 1fr;
     }
 
-    .nav-actions {
-        display: grid;
-        grid-template-columns: 1fr auto;
-    }
-
-    .search-box button {
-        padding-inline: 12px;
-    }
-
-    .hero {
-        min-height: 230px;
-        padding: 34px 10px 26px;
-    }
-
-    .hero-logo-wrap {
-        width: 74px;
-        height: 74px;
-        border-radius: 20px;
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
     .logo {
-        width: 58px;
-        height: 58px;
+        width: 40px;
+        height: 40px;
     }
 
-    #quotes {
-        border-radius: 18px;
-        min-height: 52px;
-    }
-
-    .card {
-        padding: 18px;
-    }
-
-    .section-heading {
-        display: block;
+    .portal-card-body.is-scrollable {
+        max-height: 240px;
     }
 
     .footer-inner {
-        display: grid;
-        justify-items: start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .wa-container {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .wa-btn {
+        width: 44px;
+        height: 44px;
     }
 }

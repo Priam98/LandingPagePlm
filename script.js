@@ -3,14 +3,17 @@ document.addEventListener("click", (event) => {
     if (!button) return;
 
     const content = button.nextElementSibling;
-    content.classList.toggle("active");
-    button.textContent =
-        `${content.classList.contains("active") ? "▼" : "▶"} ${button.dataset.year}`;
+    const isOpen = content.classList.toggle("active");
+    button.classList.toggle("is-open", isOpen);
+
+    const chevron = button.querySelector(".year-chevron");
+    if (chevron) chevron.textContent = isOpen ? "▼" : "▶";
 });
 
 function createPortalLink(link) {
     const anchor = document.createElement("a");
     anchor.href = link.href;
+    anchor.className = "portal-link";
     anchor.textContent = link.label;
 
     if (link.targetBlank) {
@@ -18,7 +21,9 @@ function createPortalLink(link) {
         anchor.rel = "noopener noreferrer";
     }
 
-    if (link.className) anchor.className = link.className;
+    if (link.className) {
+        anchor.classList.add(link.className);
+    }
 
     if (link.action === "openDrawing") {
         anchor.addEventListener("click", (event) => {
@@ -30,45 +35,78 @@ function createPortalLink(link) {
     return anchor;
 }
 
+function countLinks(cardData) {
+    return cardData.groups.reduce((sum, g) => sum + (g.links ? g.links.length : 0), 0);
+}
+
 function renderPortalLinks(cards) {
     const container = document.getElementById("portal-links");
     container.replaceChildren();
 
     cards.forEach((cardData) => {
         const card = document.createElement("section");
-        card.className = "card";
+        card.className = "portal-card";
         card.id = cardData.id;
 
-        const heading = document.createElement("h2");
+        // Header
+        const header = document.createElement("header");
+        header.className = "portal-card-header";
+
         const icon = document.createElement("span");
-        icon.className = "card-icon";
-        icon.textContent = cardData.icon;
+        icon.className = "portal-card-icon";
+        icon.textContent = cardData.icon || "📁";
 
-        heading.append(icon, cardData.title);
-        card.appendChild(heading);
+        const headerText = document.createElement("div");
+        headerText.className = "portal-card-header-text";
 
-        const content = cardData.scrollable
-            ? document.createElement("div")
-            : card;
+        const heading = document.createElement("h2");
+        heading.textContent = cardData.title;
 
+        const meta = document.createElement("p");
+        meta.className = "portal-card-meta";
+        const n = countLinks(cardData);
+        meta.textContent = n + " tautan";
+
+        headerText.append(heading, meta);
+        header.append(icon, headerText);
+        card.appendChild(header);
+
+        // Body
+        const body = document.createElement("div");
+        body.className = "portal-card-body";
         if (cardData.scrollable) {
-            content.className = "card-scroll";
-            card.appendChild(content);
+            body.classList.add("is-scrollable");
         }
 
         cardData.groups.forEach((group) => {
             if (!group.year) {
                 group.links.forEach((link) => {
-                    content.appendChild(createPortalLink(link));
+                    body.appendChild(createPortalLink(link));
                 });
                 return;
             }
+
+            const yearGroup = document.createElement("div");
+            yearGroup.className = "year-group";
 
             const button = document.createElement("button");
             button.type = "button";
             button.className = "year-btn";
             button.dataset.year = group.year;
-            button.textContent = `▶ ${group.year}`;
+
+            const chevron = document.createElement("span");
+            chevron.className = "year-chevron";
+            chevron.textContent = "▶";
+
+            const label = document.createElement("span");
+            label.className = "year-label";
+            label.textContent = group.year;
+
+            const count = document.createElement("span");
+            count.className = "year-count";
+            count.textContent = String(group.links.length);
+
+            button.append(chevron, label, count);
 
             const yearContent = document.createElement("div");
             yearContent.className = "year-content";
@@ -77,9 +115,11 @@ function renderPortalLinks(cards) {
                 yearContent.appendChild(createPortalLink(link));
             });
 
-            content.append(button, yearContent);
+            yearGroup.append(button, yearContent);
+            body.appendChild(yearGroup);
         });
 
+        card.appendChild(body);
         container.appendChild(card);
     });
 
@@ -267,17 +307,15 @@ const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme === "dark") {
     document.body.classList.add("dark");
-    themeBtn.textContent = "☀️";
 }
 
-themeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    const dark = document.body.classList.contains("dark");
-
-    localStorage.setItem("theme", dark ? "dark" : "light");
-    themeBtn.textContent = dark ? "☀️" : "🌙";
-});
+if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        const dark = document.body.classList.contains("dark");
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    });
+}
 
 const API =
     "https://script.google.com/macros/s/AKfycbyqnKHLkcxyobFHLJJY9I1G1zndJAe7HMZegvf3ghwQBHmeCYJ4IFbxPHP4TvLouLbfRQ/exec";

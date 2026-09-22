@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Internal Plant P4 Palembang</title>
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -17,10 +20,14 @@
 
 <body>
     <nav class="top-navbar" id="topNavbar">
+        <div class="nav-accent" aria-hidden="true"></div>
         <div class="nav-shell">
             <a class="nav-brand" href="#beranda" aria-label="Beranda">
-                <img src="logo.png" alt="Logo Megacon">
-                <span>Plant P4</span>
+                <img src="logo.png" alt="Logo Megacon" width="32" height="32">
+                <div class="nav-brand-text">
+                    <span class="nav-brand-title">PLANT P4</span>
+                    <span class="nav-brand-sub">Portal Operasional · Palembang</span>
+                </div>
             </a>
 
             <button class="nav-menu-btn" id="navMenuBtn" type="button" aria-label="Buka menu" aria-expanded="false">
@@ -41,54 +48,62 @@
                 </div>
 
                 <div class="nav-actions">
-    <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Cari spreadsheet...">
-        <button type="button" onclick="cari()">Cari</button>
-    </div>
-
-    <a
-        href="admin.html"
-        class="admin-login-btn"
-        aria-label="Buka Admin Portal"
-    >
-        🔐 Admin
-    </a>
-
-    <button id="themeBtn" type="button" aria-label="Ganti tema">🌙</button>
-</div>
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Cari spreadsheet..." autocomplete="off">
+                        <button type="button" onclick="cari()" aria-label="Cari">Cari</button>
+                    </div>
+                    <a href="admin.html" class="admin-login-btn" aria-label="Buka Admin Portal">Admin</a>
+                    <button id="themeBtn" type="button" aria-label="Ganti tema" class="theme-toggle">
+                        <span class="theme-icon-dark">🌙</span>
+                        <span class="theme-icon-light">☀️</span>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="hasilCari" class="hasil-cari"></div>
     </nav>
 
-    <div class="container">
-        <header class="hero" id="beranda">
-            <div class="hero-logo-wrap">
-                <img src="logo.png" class="logo" alt="Logo" id="logo">
+    <!-- Compact portal header -->
+    <header class="portal-header" id="beranda">
+        <div class="portal-header-inner">
+            <div class="portal-header-left">
+                <img src="logo.png" class="logo" alt="Logo" id="logo" width="48" height="48">
+                <div class="portal-header-copy">
+                    <p class="portal-org">PT. Megacon Bangun Perkasa</p>
+                    <h1>Plant P4 Palembang</h1>
+                    <p class="portal-tagline">Portal spreadsheet &amp; operasional internal</p>
+                </div>
             </div>
-            <p class="hero-kicker">PT. MEGACON BANGUN PERKASA</p>
-            <h1>PLANT P4 PALEMBANG</h1>
-            <p class="hero-subtitle">Portal Spreadsheet Plant</p>
-            <p id="quotes"></p>
-        </header>
+            <div class="portal-header-right">
+                <p id="quotes" class="portal-quote"></p>
+            </div>
+        </div>
+    </header>
 
+    <div class="container">
         <main class="dashboard-layout">
             <aside class="sidebar" aria-label="Sidebar status alat">
                 <section class="status-widget" id="status">
-                <h3>Status Alat</h3>
-                <div id="status-list">
-                    Loading...
-                </div>
-            </section>
+                    <div class="status-header">
+                        <h3>Status Alat</h3>
+                        <span class="status-live" title="Auto-refresh 60s">
+                            <span class="status-live-dot"></span>
+                            LIVE
+                        </span>
+                    </div>
+                    <div id="status-list" class="status-list">
+                        <div class="status-loading">Memuat status...</div>
+                    </div>
+                </section>
             </aside>
 
             <section class="dashboard-content" aria-label="Dashboard menu">
                 <div class="section-heading">
-                    <span>Dashboard</span>
-                    <h2>Portal Operasional Plant</h2>
+                    <h2>Menu Portal</h2>
+                    <p class="section-desc">Akses spreadsheet, form, dan dokumen operasional</p>
                 </div>
                 <div class="grid" id="portal-links" aria-live="polite">
-                    <p>Memuat tautan portal...</p>
+                    <p class="portal-loading">Memuat tautan portal...</p>
                 </div>
             </section>
         </main>
@@ -96,52 +111,38 @@
 
     <footer>
         <div class="footer-inner">
-            <span>Version 2.0</span>
+            <span class="footer-brand">Plant P4 Palembang · Megacon</span>
+            <span class="footer-version">Portal v3.0</span>
         </div>
         <div class="wa-container">
-            <a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer" class="wa-btn">
+            <a href="https://wa.me/6281380436978" target="_blank" rel="noopener noreferrer" class="wa-btn" aria-label="Hubungi via WhatsApp">
                 <img src="whatsapp.png" alt="WhatsApp">
             </a>
         </div>
     </footer>
-<!--Awal konten baru-->
-<!-- PROLETARIAT EASTER EGG -->
-<div id="proletariat-overlay">
 
-    <div id="proletariat-terminal">
-
-        <div id="proletariat-terminal-output"></div>
-
-        <span id="proletariat-cursor">█</span>
-
-        <div id="proletariat-progress-container">
-            <div id="proletariat-progress"></div>
+    <!-- PROLETARIAT EASTER EGG -->
+    <div id="proletariat-overlay">
+        <div id="proletariat-terminal">
+            <div id="proletariat-terminal-output"></div>
+            <span id="proletariat-cursor">█</span>
+            <div id="proletariat-progress-container">
+                <div id="proletariat-progress"></div>
+            </div>
+            <div id="proletariat-status"></div>
         </div>
-
-        <div id="proletariat-status"></div>
-
-    </div>
-
-
-    <div id="proletariat-final">
-
-        <div class="proletariat-title">
-            ☭ PROLETARIAT MODE
+        <div id="proletariat-final">
+            <div class="proletariat-title">
+                ☭ PROLETARIAT MODE
+            </div>
+            <p>
+                Selamat datang, kamerad.
+            </p>
+            <button id="close-proletariat" type="button">
+                Kembali ke kapitalisme
+            </button>
         </div>
-
-        <p>
-            Selamat datang, kamerad.
-        </p>
-
-        <button id="close-proletariat" type="button">
-            Kembali ke kapitalisme
-        </button>
-
     </div>
-
-</div>
-
-<!--Akhir konten baru-->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
@@ -150,11 +151,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
     <script src="navbar.js"></script>
-    <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'></script>
-    <!-- End Cloudflare Web Analytics -->
-
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
