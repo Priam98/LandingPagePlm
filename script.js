@@ -22,20 +22,49 @@ years.forEach(button => {
 });
 
 
-const tombolKabur = 
-document.querySelector('.kabur');
-document.addEventListener('mousemove', (e) =>{
+const tombolKabur = document.querySelector('.kabur');
+
+document.addEventListener('mousemove', (e) => {
     const rect = tombolKabur.getBoundingClientRect();
+
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
+
     const dx = e.clientX - centerX;
     const dy = e.clientY - centerY;
-    const jarak = Math.sqrt(dx*dx + dy*dy);
-    const pesan = ["Hayoo ngapain", "Kepooo yaaa", "Ga boleh ngintip lho", "Nah loh...."];
-    if (jarak < 150) {tombolKabur.style.transform = `translate(${-dx*3}px, ${-dy*3}px)`;
-                      tombolKabur.textContent =
-                          pesan[Math.floor(Math.random() * pesan.length)]
-                     }
+
+    const jarak = Math.sqrt(dx * dx + dy * dy);
+
+    const pesan = [
+        "Hayoo ngapain",
+        "Kepooo yaaa",
+        "Ga boleh ngintip lho",
+        "Nah loh....."
+    ];
+
+    if (jarak < 150) {
+
+        tombolKabur.style.position = 'fixed';
+        tombolKabur.style.zIndex = '99999';
+
+        let x = rect.left - dx * 3;
+        let y = rect.top - dy * 3;
+
+        // Biar tidak kabur keluar layar
+        const maxX = window.innerWidth - rect.width;
+        const maxY = window.innerHeight - rect.height;
+
+        x = Math.max(10, Math.min(x, maxX - 10));
+        y = Math.max(10, Math.min(y, maxY - 10));
+
+        tombolKabur.style.left = `${x}px`;
+        tombolKabur.style.top = `${y}px`;
+
+        tombolKabur.style.transform = 'none';
+
+        tombolKabur.textContent =
+            pesan[Math.floor(Math.random() * pesan.length)];
+    }
 });
 
                           
