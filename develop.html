@@ -3,74 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-
+    <title>Coming Soon — Plant P4</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/pages.css">
     <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
+        .coming-wrap {
+            min-height: calc(100vh - 52px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
         }
-
-        body{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:#111;
-            color:white;
-            text-align:center;
+        .coming-card {
+            width: min(420px, 100%);
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-bar);
+            padding: 28px 24px;
+            text-align: center;
         }
-
-        .container{
-            padding:30px;
+        .coming-card img {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 14px;
+            object-fit: contain;
         }
-
-        h1{
-            font-size:3rem;
-            margin-bottom:15px;
-            text-shadow: 0 0 15px
-            rgba(255,255,255,0.5);
+        .coming-card h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--title);
+            margin-bottom: 8px;
         }
-
-        p{
-            font-size:1.1rem;
-            color:#bbb;
+        .coming-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .coming-card a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 16px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .coming-card a:hover {
+            background: var(--accent-bright);
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>🚧 Coming Soon 🚧</h1>
-            <div class="progress">
-                <div class="bar">
-                </div>
-                <style>
-                    .progress{
-                        width: 300px;
-                        height: 10px;
-                        background: #333;
-                        border-radius: 10px;
-                        overflow: hidden;
-                        margin: auto;}
-                    .bar{
-                        width: 40%;
-                        height: 100%;
-                        background: #4da6ff;
-                        animation: loading 2s infinite;}
-                    @keyframes loading{
-                        0%{transform:translateX(-100%);}
-                        100%{transform:translateX(300%);}
-                    }
-                </style>
-            </div>
-        <p>Halaman ini masih dalam pengembangan.</p>
-        <p>Silakan kembali lagi nanti.</p>
-        <p>Developer sedang mencoba memperbaiki bug yang ternyata adalah fitur🤣</p>
-        <p>Untuk iklan bisa menghubungi 0813-8043-6978</p>
+    <nav class="page-nav">
+        <div class="page-nav-inner">
+            <a class="page-brand" href="index.html"><img src="logo.png" alt="Logo"><span>Plant P4</span></a>
+            <button id="themeBtn" type="button" aria-label="Ganti tema">🌙</button>
+        </div>
+    </nav>
+    <div class="coming-wrap">
+        <div class="coming-card">
+            <img src="logo.png" alt="Logo">
+            <h1>Coming Soon</h1>
+            <p>Halaman ini masih dalam pengembangan.</p>
+            <a href="index.html">Kembali ke Portal</a>
+        </div>
     </div>
-
+    <script src="page-theme.js"></script>
 </body>
 </html>
