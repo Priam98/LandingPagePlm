@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="css/proletariat.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 
 <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <nav class="top-navbar" id="topNavbar">
         <div class="nav-accent" aria-hidden="true"></div>
         <div class="nav-shell">
@@ -63,26 +66,46 @@
         <div id="hasilCari" class="hasil-cari"></div>
     </nav>
 
-    <!-- Compact portal header -->
-    <header class="portal-header" id="beranda">
-        <div class="portal-header-inner">
-            <div class="portal-header-left">
-                <img src="logo.png" class="logo" alt="Logo" id="logo" width="48" height="48">
-                <div class="portal-header-copy">
+    <!-- Animated hero -->
+    <header class="hero" id="beranda">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="hero-grid"></span>
+            <span class="hero-blob hero-blob-1"></span>
+            <span class="hero-blob hero-blob-2"></span>
+            <span class="hero-blob hero-blob-3"></span>
+        </div>
+
+        <div class="hero-inner">
+            <div class="hero-brand hero-enter">
+                <img src="logo.png" class="logo" alt="Logo" id="logo" width="60" height="60">
+                <div>
                     <p class="portal-org">PT. Megacon Bangun Perkasa</p>
-                    <h1>Plant P4 Palembang</h1>
+                    <h1 class="hero-title">Plant P4 <span>Palembang</span></h1>
                     <p class="portal-tagline">Portal spreadsheet &amp; operasional internal</p>
                 </div>
             </div>
-            <div class="portal-header-right">
+
+            <div class="hero-side hero-enter hero-enter-2">
                 <p id="quotes" class="portal-quote"></p>
+                <div class="hero-stats">
+                    <span class="stat-pill"><strong id="statCards">0</strong><span>Menu Portal</span></span>
+                    <span class="stat-pill"><strong id="statTools">0</strong><span>Alat Terpantau</span></span>
+                    <span class="stat-pill live"><span class="status-live-dot"></span><span>Live Monitoring</span></span>
+                </div>
             </div>
         </div>
+
+        <div class="hero-cta hero-enter hero-enter-3">
+            <a href="#produksi" class="btn-primary">Buka Menu Portal ↓</a>
+            <a href="#status" class="btn-ghost">Status Alat</a>
+        </div>
+
+        <a href="#produksi" class="hero-scroll-cue" aria-label="Gulir ke bawah"><span></span></a>
     </header>
 
     <div class="container">
         <main class="dashboard-layout">
-            <aside class="sidebar" aria-label="Sidebar status alat">
+            <aside class="sidebar reveal" aria-label="Sidebar status alat">
                 <section class="status-widget" id="status">
                     <div class="status-header">
                         <h3>Status Alat</h3>
@@ -97,7 +120,7 @@
                 </section>
             </aside>
 
-            <section class="dashboard-content" aria-label="Dashboard menu">
+            <section class="dashboard-content reveal" aria-label="Dashboard menu" style="--delay:0.1s">
                 <div class="section-heading">
                     <h2>Menu Portal</h2>
                     <p class="section-desc">Akses spreadsheet, form, dan dokumen operasional</p>
@@ -120,6 +143,8 @@
             </a>
         </div>
     </footer>
+
+    <button id="scrollTopBtn" class="scroll-top-btn" type="button" aria-label="Kembali ke atas">↑</button>
 
     <!-- PROLETARIAT EASTER EGG -->
     <div id="proletariat-overlay">
@@ -151,6 +176,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
     <script src="navbar.js"></script>
+    <script src="animations.js"></script>
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "40e56a7c78fd4556b15a12b5b40dea2a"}'></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFY0KPPQ1H"></script>
     <script>

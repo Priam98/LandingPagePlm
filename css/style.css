@@ -1,47 +1,56 @@
 /* ============================================================
-   Portal v3.0 — Plant Operational Design System
-   Dense · Solid · Corporate · Less SaaS fluff
+   Portal v4.0 — Modern Plant Operational Design System
+   Soft elevation · rounded · airy · still corporate
    ============================================================ */
 
 :root {
     --font: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
 
-    /* Megacon-leaning industrial palette */
-    --bg: #e8ecf0;
+    /* Megacon-leaning industrial palette, softened */
+    --bg: #eef2f6;
     --bg-panel: #ffffff;
-    --surface: #f4f6f8;
+    --surface: #f6f8fa;
     --text: #1a2332;
-    --muted: #5c6b7a;
+    --muted: #64748b;
     --title: #0d1520;
-    --border: #c5ced6;
-    --border-soft: #d8dee5;
+    --border: #e1e7ed;
+    --border-soft: #ecf0f4;
     --accent: #1a5f7a;
-    --accent-bright: #227c9d;
-    --accent-soft: #e4eef2;
-    --accent-bar: #1a5f7a;
-    --danger: #b91c1c;
-    --ok: #15803d;
-    --year-bg: #f0f3f6;
-    --shadow: none;
-    --radius: 4px;
-    --navbar-height: 52px;
+    --accent-bright: #2790b0;
+    --accent-2: #17b0a7;
+    --accent-soft: #e6f2f6;
+    --accent-bar: linear-gradient(90deg, #1a5f7a, #17b0a7);
+    --danger: #dc2626;
+    --ok: #16a34a;
+    --year-bg: #f6f8fa;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 1px rgba(15, 23, 42, 0.03);
+    --shadow-md: 0 8px 24px -8px rgba(15, 23, 42, 0.12), 0 2px 6px -2px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 20px 40px -16px rgba(15, 23, 42, 0.18);
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --navbar-height: 60px;
     --header-height: auto;
 }
 
 body.dark {
-    --bg: #0e1318;
-    --bg-panel: #161c24;
-    --surface: #1a222c;
-    --text: #d8dee6;
-    --muted: #8b9aab;
-    --title: #f0f4f8;
-    --border: #2a3544;
-    --border-soft: #232d3a;
+    --bg: #0b0f14;
+    --bg-panel: #131a22;
+    --surface: #182029;
+    --text: #dbe3ea;
+    --muted: #90a0b2;
+    --title: #f4f7fa;
+    --border: #223040;
+    --border-soft: #1b2833;
     --accent: #3d9bb8;
-    --accent-bright: #4db0d0;
-    --accent-soft: #1a2a34;
-    --accent-bar: #3d9bb8;
-    --year-bg: #1a222c;
+    --accent-bright: #56b8d6;
+    --accent-2: #2fd6c8;
+    --accent-soft: #16323d;
+    --accent-bar: linear-gradient(90deg, #3d9bb8, #2fd6c8);
+    --year-bg: #182029;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 28px -10px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 24px 48px -16px rgba(0, 0, 0, 0.6);
     color-scheme: dark;
 }
 
@@ -55,17 +64,18 @@ body.dark {
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--navbar-height) + 12px);
+    scroll-padding-top: calc(var(--navbar-height) + 16px);
 }
 
 body {
     min-height: 100vh;
     font-family: var(--font);
     font-size: 14px;
-    line-height: 1.45;
+    line-height: 1.5;
     background: var(--bg);
     color: var(--text);
     -webkit-font-smoothing: antialiased;
+    transition: background 0.25s ease, color 0.25s ease;
 }
 
 img { max-width: 100%; display: block; }
@@ -73,89 +83,63 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { cursor: pointer; border: none; background: none; }
 
-/* ---------- Compact portal header ---------- */
-.portal-header {
-    margin-top: var(--navbar-height);
-    background: var(--bg-panel);
-    border-bottom: 1px solid var(--border);
-}
-
-.portal-header-inner {
-    width: min(1360px, calc(100% - 32px));
-    margin: 0 auto;
-    padding: 16px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-.portal-header-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-}
-
+/* ---------- Shared bits reused inside the hero (see animate.css) ---------- */
 .logo {
-    width: 48px;
-    height: 48px;
     object-fit: contain;
     flex-shrink: 0;
     cursor: pointer;
-    border: 1px solid var(--border-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     background: var(--surface);
-    padding: 4px;
+    padding: 6px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px) rotate(-2deg);
+    box-shadow: var(--shadow-md);
 }
 
 .portal-org {
     font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-    margin-bottom: 2px;
-}
-
-.portal-header-copy h1 {
-    font-size: 1.35rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--title);
-    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 3px;
 }
 
 .portal-tagline {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: var(--muted);
-    margin-top: 2px;
-}
-
-.portal-header-right {
-    flex-shrink: 0;
-    max-width: 360px;
+    margin-top: 3px;
 }
 
 .portal-quote {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    font-style: italic;
     color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
     border-left: 3px solid var(--accent);
-    padding: 6px 0 6px 12px;
-    line-height: 1.4;
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    line-height: 1.45;
 }
 
 /* ---------- Container ---------- */
 .container {
     width: min(1360px, calc(100% - 32px));
     margin: 0 auto;
-    padding: 16px 0 32px;
+    padding: 24px 0 40px;
 }
 
 /* ---------- Footer ---------- */
 footer {
     border-top: 1px solid var(--border);
     background: var(--bg-panel);
-    padding: 12px 0;
+    padding: 16px 0;
 }
 
 .footer-inner {
@@ -173,22 +157,32 @@ footer {
     font-weight: 700;
     color: var(--accent);
     letter-spacing: 0.03em;
+    background: var(--accent-soft);
+    padding: 3px 10px;
+    border-radius: 999px;
 }
 
 .wa-container {
     position: fixed;
-    right: 16px;
-    bottom: 16px;
+    right: 20px;
+    bottom: 20px;
     z-index: 90;
 }
 
 .wa-btn {
     display: grid;
     place-items: center;
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
     background: #25d366;
-    border: 1px solid #1da851;
+    box-shadow: 0 10px 24px -6px rgba(37, 211, 102, 0.55);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 14px 30px -6px rgba(37, 211, 102, 0.65);
 }
 
 .wa-btn img {
@@ -199,10 +193,11 @@ footer {
 .portal-loading {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 32px 16px;
+    padding: 40px 16px;
     color: var(--muted);
     font-weight: 500;
     border: 1px dashed var(--border);
+    border-radius: var(--radius);
     background: var(--bg-panel);
 }
 

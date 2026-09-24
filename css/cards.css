@@ -1,38 +1,41 @@
 /* ============================================================
-   Portal v3.0 — Solid panel sections (not floating SaaS cards)
+   Portal v4.0 — Modern elevated cards
    ============================================================ */
 
 .portal-card {
     background: var(--bg-panel);
     border: 1px solid var(--border);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    border-left: 3px solid var(--accent-bar);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .portal-card:hover {
+    transform: translateY(-3px);
     border-color: var(--accent);
-    border-left-color: var(--accent-bright);
+    box-shadow: var(--shadow-md);
 }
 
 .portal-card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .portal-card-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
     display: grid;
     place-items: center;
     background: var(--accent-soft);
-    border: 1px solid var(--border);
-    font-size: 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 1.05rem;
     line-height: 1;
 }
 
@@ -42,7 +45,7 @@
 }
 
 .portal-card-header h2 {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--title);
     line-height: 1.2;
@@ -53,11 +56,11 @@
     font-size: 0.7rem;
     font-weight: 600;
     color: var(--muted);
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .portal-card-body {
-    padding: 4px 0;
+    padding: 6px 8px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -76,6 +79,7 @@
 
 .portal-card-body.is-scrollable::-webkit-scrollbar-thumb {
     background: var(--border);
+    border-radius: 4px;
 }
 
 /* Dense link rows */
@@ -83,49 +87,45 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 7px 12px;
+    padding: 9px 10px;
+    margin: 1px 0;
+    border-radius: var(--radius-sm);
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--text);
-    border-bottom: 1px solid var(--border-soft);
-    transition: background 0.1s ease, color 0.1s ease, padding-left 0.1s ease;
-}
-
-.portal-link:last-child {
-    border-bottom: none;
+    transition: background 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
 }
 
 .portal-link::before {
     content: "";
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
     background: var(--accent);
     flex-shrink: 0;
     opacity: 0.5;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .portal-link:hover {
     background: var(--accent-soft);
     color: var(--accent);
-    padding-left: 16px;
+    padding-left: 14px;
 }
 
 .portal-link:hover::before {
     opacity: 1;
+    transform: scale(1.3);
 }
 
 .portal-link:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: -2px;
+    outline-offset: 2px;
 }
 
-/* Year groups — solid rows, not pills */
+/* Year groups — soft rounded rows */
 .year-group {
-    border-bottom: 1px solid var(--border-soft);
-}
-
-.year-group:last-child {
-    border-bottom: none;
+    margin: 2px 4px;
 }
 
 .year-btn {
@@ -133,24 +133,31 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    padding: 9px 12px;
     background: var(--year-bg);
-    border: none;
-    border-bottom: 1px solid var(--border-soft);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--accent);
     text-align: left;
+    transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .year-btn:hover {
     background: var(--accent-soft);
+    border-color: var(--border-soft);
 }
 
 .year-btn .year-chevron {
     font-size: 0.65rem;
     width: 12px;
     opacity: 0.8;
+    transition: transform 0.2s ease;
+}
+
+.year-group:has(.year-content.active) .year-chevron {
+    transform: rotate(90deg);
 }
 
 .year-btn .year-label {
@@ -163,16 +170,25 @@
     color: var(--muted);
     min-width: 20px;
     text-align: right;
+    background: var(--bg-panel);
+    padding: 1px 6px;
+    border-radius: 999px;
 }
 
 .year-content {
     display: none;
     flex-direction: column;
-    background: var(--bg-panel);
+    padding-top: 2px;
 }
 
 .year-content.active {
     display: flex;
+    animation: year-open 0.18s ease;
+}
+
+@keyframes year-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .year-content .portal-link {
@@ -190,8 +206,9 @@
     pointer-events: none;
     transition: left 0.18s ease, top 0.18s ease;
     border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     background: var(--bg-panel);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 .is-flying {

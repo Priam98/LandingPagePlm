@@ -19,6 +19,8 @@
 
 <body>
 
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- ======================================================
          LOGIN
          ====================================================== -->
@@ -108,6 +110,8 @@
                 <a href="index.html" class="btn btn-secondary">
                     Portal
                 </a>
+
+                <button id="themeBtn" type="button" aria-label="Ganti tema" class="theme-toggle">🌙</button>
 
                 <button
                     id="logoutBtn"
@@ -318,7 +322,10 @@
 
     </div>
 
+    <button id="scrollTopBtn" class="scroll-top-btn" type="button" aria-label="Kembali ke atas">↑</button>
 
+    <script src="page-theme.js"></script>
+    <script src="motion.js"></script>
     <script src="admin.js"></script>
 
 </body>

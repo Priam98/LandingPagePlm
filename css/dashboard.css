@@ -1,31 +1,33 @@
 /* ============================================================
-   Portal v3.0 — Dense dashboard layout
+   Portal v4.0 — Modern dashboard layout
    ============================================================ */
 
 .dashboard-layout {
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 20px;
     align-items: start;
 }
 
 .sidebar {
     position: sticky;
-    top: calc(var(--navbar-height) + 12px);
+    top: calc(var(--navbar-height) + 16px);
 }
 
 .status-widget {
     background: var(--bg-panel);
     border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
 .status-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
 }
 
 .status-header h3 {
@@ -44,6 +46,9 @@
     font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--ok);
+    background: color-mix(in srgb, var(--ok) 12%, transparent);
+    padding: 3px 8px;
+    border-radius: 999px;
 }
 
 .status-live-dot {
@@ -62,21 +67,28 @@
 .status-list {
     max-height: 480px;
     overflow-y: auto;
-    padding: 6px;
+    padding: 8px;
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
 }
 
 .status-item {
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border-soft);
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
     font-size: 0.78rem;
     line-height: 1.35;
     color: var(--muted);
+    transition: background 0.15s ease;
 }
 
 .status-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.status-item:hover {
+    background: var(--accent-soft);
 }
 
 .status-item strong {
@@ -84,32 +96,43 @@
     color: var(--title);
     font-weight: 650;
     font-size: 0.82rem;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .status-loading {
-    padding: 16px 10px;
+    padding: 20px 10px;
     text-align: center;
     color: var(--muted);
     font-size: 0.8rem;
 }
 
 .section-heading {
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
+    position: relative;
+}
+
+.section-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 56px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--accent-bar);
 }
 
 .section-heading h2 {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: var(--title);
 }
 
@@ -121,5 +144,5 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    gap: 16px;
 }

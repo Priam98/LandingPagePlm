@@ -19,7 +19,8 @@
 
     .container,
     .nav-shell,
-    .portal-header-inner,
+    .hero-inner,
+    .hero-cta,
     .footer-inner {
         width: min(100% - 20px, 760px);
     }
@@ -36,12 +37,14 @@
         position: absolute;
         left: 10px;
         right: 10px;
-        top: calc(var(--navbar-height) + 4px);
+        top: calc(var(--navbar-height) + 8px);
         display: grid;
         gap: 10px;
-        padding: 12px;
+        padding: 14px;
         border: 1px solid var(--border);
+        border-radius: var(--radius);
         background: var(--bg-panel);
+        box-shadow: var(--shadow-lg);
         transform: translateY(-6px);
         opacity: 0;
         pointer-events: none;
@@ -67,7 +70,8 @@
 
     .nav-links a {
         border: 1px solid var(--border-soft);
-        border-bottom: 1px solid var(--border-soft);
+        border-radius: var(--radius-sm);
+        margin: 0;
         padding: 10px 12px;
         background: var(--surface);
         color: var(--text);
@@ -110,27 +114,21 @@
         max-height: 220px;
     }
 
-    .portal-header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 12px 0;
-    }
-
-    .portal-header-right {
+    .hero-side {
         max-width: 100%;
         width: 100%;
     }
 
-    .portal-header-copy h1 {
-        font-size: 1.15rem;
+    .hero-title {
+        font-size: 1.35rem;
     }
 }
 
 @media (max-width: 640px) {
     .container,
     .nav-shell,
-    .portal-header-inner,
+    .hero-inner,
+    .hero-cta,
     .footer-inner {
         width: min(100% - 16px, 480px);
     }

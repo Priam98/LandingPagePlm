@@ -1,5 +1,5 @@
 /* ============================================================
-   Portal v3.0 — Solid corporate navbar
+   Portal v4.0 — Modern glass navbar
    ============================================================ */
 
 .top-navbar {
@@ -9,8 +9,11 @@
     right: 0;
     z-index: 100;
     height: var(--navbar-height);
-    background: var(--bg-panel);
+    background: color-mix(in srgb, var(--bg-panel) 88%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
     border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.2s ease;
 }
 
 .nav-accent {
@@ -40,9 +43,10 @@
 }
 
 .nav-brand img {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
+    border-radius: 8px;
 }
 
 .nav-brand-text {
@@ -54,7 +58,7 @@
 
 .nav-brand-title {
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     letter-spacing: 0.04em;
     color: var(--title);
 }
@@ -68,34 +72,39 @@
 
 .nav-menu-btn {
     display: none;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     margin-left: auto;
     position: relative;
     border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
     background: var(--surface);
+    transition: background 0.15s ease;
 }
+
+.nav-menu-btn:hover { background: var(--accent-soft); }
 
 .nav-menu-btn span {
     position: absolute;
-    left: 8px;
-    right: 8px;
+    left: 9px;
+    right: 9px;
     height: 2px;
+    border-radius: 2px;
     background: var(--text);
     transition: transform 0.2s ease, opacity 0.15s ease, top 0.2s ease;
 }
 
-.nav-menu-btn span:nth-child(1) { top: 11px; }
-.nav-menu-btn span:nth-child(2) { top: 17px; }
-.nav-menu-btn span:nth-child(3) { top: 23px; }
+.nav-menu-btn span:nth-child(1) { top: 12px; }
+.nav-menu-btn span:nth-child(2) { top: 18px; }
+.nav-menu-btn span:nth-child(3) { top: 24px; }
 
 .nav-menu-btn.is-open span:nth-child(1) {
-    top: 17px;
+    top: 18px;
     transform: rotate(45deg);
 }
 .nav-menu-btn.is-open span:nth-child(2) { opacity: 0; }
 .nav-menu-btn.is-open span:nth-child(3) {
-    top: 17px;
+    top: 18px;
     transform: rotate(-45deg);
 }
 
@@ -110,7 +119,7 @@
 .nav-links {
     display: flex;
     align-items: stretch;
-    gap: 0;
+    gap: 2px;
     flex: 1;
     min-width: 0;
     height: 100%;
@@ -123,19 +132,20 @@
 .nav-links a {
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 14px;
+    margin: 8px 0;
+    border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--muted);
     white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
 .nav-links a:hover {
-    color: var(--title);
+    color: var(--accent);
     background: var(--accent-soft);
-    border-bottom-color: var(--accent);
+    transform: translateY(-1px);
 }
 
 .nav-actions {
@@ -148,14 +158,18 @@
 .search-box {
     display: flex;
     align-items: stretch;
-    height: 32px;
+    height: 36px;
     width: 220px;
     border: 1px solid var(--border);
+    border-radius: 999px;
     background: var(--surface);
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .search-box:focus-within {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .search-box input {
@@ -163,7 +177,7 @@
     min-width: 0;
     border: none;
     background: transparent;
-    padding: 0 10px;
+    padding: 0 14px;
     color: var(--text);
     font-size: 0.8rem;
     outline: none;
@@ -174,12 +188,13 @@
 }
 
 .search-box button {
-    padding: 0 12px;
+    padding: 0 16px;
     background: var(--accent);
     color: #fff;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.02em;
+    transition: background 0.15s ease;
 }
 
 .search-box button:hover {
@@ -189,34 +204,40 @@
 .admin-login-btn {
     display: inline-flex;
     align-items: center;
-    height: 32px;
-    padding: 0 12px;
+    height: 36px;
+    padding: 0 16px;
     border: 1px solid var(--border);
+    border-radius: 999px;
     background: var(--surface);
     font-size: 0.78rem;
     font-weight: 700;
     color: var(--text);
     letter-spacing: 0.02em;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
 .admin-login-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
     background: var(--accent-soft);
+    transform: translateY(-1px);
 }
 
 .theme-toggle {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: grid;
     place-items: center;
     border: 1px solid var(--border);
+    border-radius: 50%;
     background: var(--surface);
     font-size: 0.95rem;
+    transition: background 0.15s ease, transform 0.2s ease;
 }
 
 .theme-toggle:hover {
     background: var(--accent-soft);
+    transform: rotate(12deg);
 }
 
 .theme-toggle .theme-icon-light { display: none; }
@@ -224,6 +245,5 @@ body.dark .theme-toggle .theme-icon-dark { display: none; }
 body.dark .theme-toggle .theme-icon-light { display: inline; }
 
 .top-navbar.is-scrolled {
-    /* solid bar already — slight deepen only */
-    box-shadow: 0 1px 0 var(--border);
+    box-shadow: var(--shadow-md);
 }
