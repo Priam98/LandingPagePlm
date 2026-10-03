@@ -207,8 +207,58 @@ async function loadPortalFromFallback() {
     return data.cards;
 }
 
+function showPortalSkeleton() {
+    const container = document.getElementById("portal-links");
+
+    if (container) {
+        container.innerHTML = `
+            <div class="portal-skeleton-grid" aria-hidden="true">
+
+                ${Array.from({ length: 6 }, () => `
+                    <section class="skeleton-card">
+
+                        <div class="skeleton-card-header">
+                            <span class="skeleton skeleton-icon"></span>
+
+                            <div class="skeleton-header-text">
+                                <span class="skeleton skeleton-title"></span>
+                                <span class="skeleton skeleton-meta"></span>
+                            </div>
+                        </div>
+
+                        <div class="skeleton-card-body">
+                            <span class="skeleton skeleton-link"></span>
+                            <span class="skeleton skeleton-link"></span>
+                            <span class="skeleton skeleton-link"></span>
+                            <span class="skeleton skeleton-link"></span>
+                            <span class="skeleton skeleton-link"></span>
+                        </div>
+
+                    </section>
+                `).join("")}
+
+            </div>
+        `;
+    }
+
+    const statusContainer = document.getElementById("status-list");
+
+    if (statusContainer) {
+        statusContainer.innerHTML = `
+            <div class="status-skeleton" aria-hidden="true">
+                <span class="skeleton status-skeleton-item"></span>
+                <span class="skeleton status-skeleton-item"></span>
+                <span class="skeleton status-skeleton-item"></span>
+            </div>
+        `;
+    }
+}
+
+
 async function loadPortalLinks() {
     const container = document.getElementById("portal-links");
+
+    showPortalSkeleton();
 
     try {
         const cards = await loadPortalFromSupabase();
