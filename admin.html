@@ -149,6 +149,16 @@
                     <strong id="linkCount">0</strong>
                 </div>
 
+                <div class="summary-card">
+                    <span>Klik Tercatat</span>
+                    <strong id="clickCount">0</strong>
+                </div>
+
+                <div class="summary-card">
+                    <span>Changelog</span>
+                    <strong id="changelogCount">0</strong>
+                </div>
+
             </section>
 
 
@@ -157,6 +167,72 @@
                  ================================================== -->
 
             <div id="globalMessage" class="global-message"></div>
+
+
+            <!-- ==================================================
+                 CLICK STATS
+                 ================================================== -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Statistik Klik</h2>
+                        <p>
+                            Ranking link berdasarkan jumlah klik dari semua perangkat.
+                        </p>
+                    </div>
+
+                    <button
+                        id="refreshClicksBtn"
+                        type="button"
+                        class="btn btn-secondary"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+                <div
+                    id="clicksContainer"
+                    class="data-list"
+                ></div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 CHANGELOG
+                 ================================================== -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Changelog</h2>
+                        <p>
+                            Pengumuman update yang tampil di portal publik.
+                        </p>
+                    </div>
+
+                    <button
+                        id="addChangelogBtn"
+                        type="button"
+                        class="btn btn-primary"
+                    >
+                        + Tambah Changelog
+                    </button>
+
+                </div>
+
+                <div
+                    id="changelogContainer"
+                    class="data-list"
+                ></div>
+
+            </section>
 
 
             <!-- ==================================================

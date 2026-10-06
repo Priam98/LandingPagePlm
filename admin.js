@@ -1471,6 +1471,14 @@ async function handleCrudSubmit(event) {
                 await updateLink();
                 break;
 
+            case "create-changelog":
+                await createChangelog();
+                break;
+
+            case "edit-changelog":
+                await updateChangelog();
+                break;
+
             default:
                 throw new Error(
                     "Mode CRUD tidak dikenali."
@@ -2094,4 +2102,284 @@ function escapeHtmlAttribute(value) {
 
     return escapeHtml(value);
 
+}
+
+// ============================================================
+// CLICK STATS
+// ============================================================
+
+const clicksContainer = document.getElementById("clicksContainer");
+const clickCountEl = document.getElementById("clickCount");
+const refreshClicksBtn = document.getElementById("refreshClicksBtn");
+
+async function loadClickStats() {
+    if (!clicksContainer) return;
+
+    clicksContainer.innerHTML = '<div class="empty">Memuat statistik klik...</div>';
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("link_clicks")
+            .select("href, label, click_count, last_clicked_at")
+            .order("click_count", { ascending: false })
+            .limit(100);
+
+        if (error) throw error;
+
+        const rows = data || [];
+
+        if (clickCountEl) {
+            clickCountEl.textContent = rows.length;
+        }
+
+        clicksContainer.replaceChildren();
+
+        if (!rows.length) {
+            const empty = createElement("div", "Belum ada data klik.");
+            empty.className = "empty";
+            clicksContainer.appendChild(empty);
+            return;
+        }
+
+        rows.forEach((row, index) => {
+            const el = createElement("div");
+            el.className = "data-row";
+
+            const main = createElement("div");
+            main.className = "data-main";
+
+            const title = createElement("div");
+            title.className = "data-title";
+            title.appendChild(
+                createElement("span", `${index + 1}. ${row.label || "(tanpa label)"}`)
+            );
+
+            const meta = createElement("div");
+            meta.className = "data-meta";
+
+            meta.append(
+                createElement("span", `${row.click_count} klik`),
+                createElement(
+                    "span",
+                    row.last_clicked_at
+                        ? `Terakhir: ${new Date(row.last_clicked_at).toLocaleString("id-ID")}`
+                        : ""
+                )
+            );
+
+            const url = createElement("div", row.href);
+            url.className = "data-url";
+            url.style.fontSize = "0.75rem";
+            url.style.opacity = "0.7";
+            url.style.wordBreak = "break-all";
+
+            main.append(title, meta, url);
+            el.appendChild(main);
+            clicksContainer.appendChild(el);
+        });
+    } catch (err) {
+        console.error(err);
+        clicksContainer.innerHTML =
+            '<div class="empty">Gagal memuat statistik klik: ' +
+            escapeHtml(err.message) +
+            "</div>";
+    }
+}
+
+
+// ============================================================
+// CHANGELOG MANAGEMENT
+// ============================================================
+
+let changelogEntries = [];
+const changelogContainer = document.getElementById("changelogContainer");
+const changelogCountEl = document.getElementById("changelogCount");
+const addChangelogBtn = document.getElementById("addChangelogBtn");
+
+async function loadChangelog() {
+    if (!changelogContainer) return;
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("changelog")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        changelogEntries = data || [];
+
+        if (changelogCountEl) {
+            changelogCountEl.textContent = changelogEntries.length;
+        }
+
+        renderChangelog();
+    } catch (err) {
+        console.error(err);
+        changelogContainer.innerHTML =
+            '<div class="empty">Gagal memuat changelog: ' +
+            escapeHtml(err.message) +
+            "</div>";
+    }
+}
+
+function renderChangelog() {
+    if (!changelogContainer) return;
+
+    changelogContainer.replaceChildren();
+
+    if (!changelogEntries.length) {
+        const empty = createElement("div", "Belum ada changelog.");
+        empty.className = "empty";
+        changelogContainer.appendChild(empty);
+        return;
+    }
+
+    changelogEntries.forEach((entry) => {
+        const row = createElement("div");
+        row.className = "data-row";
+
+        const main = createElement("div");
+        main.className = "data-main";
+
+        const title = createElement("div");
+        title.className = "data-title";
+        title.appendChild(createElement("span", entry.title));
+
+        const meta = createElement("div");
+        meta.className = "data-meta";
+
+        meta.append(
+            createElement(
+                "span",
+                entry.is_published ? "Published" : "Draft"
+            ),
+            createElement(
+                "span",
+                new Date(entry.created_at).toLocaleString("id-ID")
+            )
+        );
+
+        if (entry.description) {
+            const desc = createElement("div", entry.description);
+            desc.style.fontSize = "0.8rem";
+            desc.style.opacity = "0.8";
+            desc.style.marginTop = "4px";
+            main.append(title, meta, desc);
+        } else {
+            main.append(title, meta);
+        }
+
+        const actions = createElement("div");
+        actions.className = "data-actions";
+
+        actions.append(
+            createButton("Edit", "btn-secondary", () => openChangelogModal(entry)),
+            createButton("Hapus", "btn-danger", () => deleteChangelog(entry))
+        );
+
+        row.append(main, actions);
+        changelogContainer.appendChild(row);
+    });
+}
+
+function openChangelogModal(entry) {
+    modalMode = entry ? "edit-changelog" : "create-changelog";
+    editingId = entry ? entry.id : null;
+
+    modalTitle.textContent = entry ? "Edit Changelog" : "Tambah Changelog";
+
+    modalBody.innerHTML = `
+        <label>Judul</label>
+        <input type="text" id="clTitle" required value="${escapeHtmlAttribute(entry?.title || "")}">
+
+        <label>Deskripsi</label>
+        <textarea id="clDescription" rows="4">${escapeHtml(entry?.description || "")}</textarea>
+
+        <label>
+            <input type="checkbox" id="clPublished" ${entry?.is_published !== false ? "checked" : ""}>
+            Published (tampil di portal)
+        </label>
+    `;
+
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false");
+}
+
+async function createChangelog() {
+    const title = document.getElementById("clTitle").value.trim();
+    const description = document.getElementById("clDescription").value.trim();
+    const isPublished = document.getElementById("clPublished").checked;
+
+    if (!title) throw new Error("Judul wajib diisi.");
+
+    const { error } = await supabaseClient.from("changelog").insert({
+        title,
+        description: description || null,
+        is_published: isPublished
+    });
+
+    if (error) throw error;
+}
+
+async function updateChangelog() {
+    const title = document.getElementById("clTitle").value.trim();
+    const description = document.getElementById("clDescription").value.trim();
+    const isPublished = document.getElementById("clPublished").checked;
+
+    if (!title) throw new Error("Judul wajib diisi.");
+
+    const { error } = await supabaseClient
+        .from("changelog")
+        .update({
+            title,
+            description: description || null,
+            is_published: isPublished
+        })
+        .eq("id", editingId);
+
+    if (error) throw error;
+}
+
+async function deleteChangelog(entry) {
+    const confirmed = confirm(`Hapus changelog "${entry.title}"?`);
+    if (!confirmed) return;
+
+    const { error } = await supabaseClient
+        .from("changelog")
+        .delete()
+        .eq("id", entry.id);
+
+    if (error) {
+        alert("Gagal menghapus: " + error.message);
+        return;
+    }
+
+    await loadChangelog();
+    showGlobalMessage("Changelog dihapus.");
+}
+
+
+// ============================================================
+// INIT EXTRA: click stats + changelog after auth load
+// ============================================================
+
+const _origHandleAuthenticated = handleAuthenticated;
+handleAuthenticated = async function (session) {
+    await _origHandleAuthenticated(session);
+    // loadAllData already called inside; also load extras
+    try {
+        await loadClickStats();
+        await loadChangelog();
+    } catch (e) {
+        console.warn("Extra admin panels:", e);
+    }
+};
+
+if (addChangelogBtn) {
+    addChangelogBtn.addEventListener("click", () => openChangelogModal());
+}
+
+if (refreshClicksBtn) {
+    refreshClicksBtn.addEventListener("click", () => loadClickStats());
 }
